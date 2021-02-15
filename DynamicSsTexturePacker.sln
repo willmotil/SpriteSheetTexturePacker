@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicSsTexturePacker", "DynamicSsTexturePacker\DynamicSsTexturePacker.csproj", "{F5838AA0-4DD0-4D88-9E4C-8BF7B3C6E2CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5838AA0-4DD0-4D88-9E4C-8BF7B3C6E2CB}.Debug|x86.ActiveCfg = Debug|x86
+		{F5838AA0-4DD0-4D88-9E4C-8BF7B3C6E2CB}.Debug|x86.Build.0 = Debug|x86
+		{F5838AA0-4DD0-4D88-9E4C-8BF7B3C6E2CB}.Release|x86.ActiveCfg = Release|x86
+		{F5838AA0-4DD0-4D88-9E4C-8BF7B3C6E2CB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64C17390-ED36-4006-A133-E17BF08DD430}
+	EndGlobalSection
+EndGlobal
