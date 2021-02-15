@@ -4,11 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/will/MainFiles/MyProjects2018/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/filterTestImage.png</File>
-    <File>C:/Users/will/MainFiles/MyProjects2018/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/MgFont.spritefont</File>
-    <File>C:/Users/will/MainFiles/MyProjects2018/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/MonoGameLogoSpliffedup.png</File>
-    <File>C:/Users/will/MainFiles/MyProjects2018/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/sphereImage.png</File>
-    <File>C:/Users/will/MainFiles/MyProjects2018/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/TestOutlineImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/filterTestImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/MgFont.spritefont</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/MonoGameLogoSpliffedup.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/sphereImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/TestOutlineImage.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

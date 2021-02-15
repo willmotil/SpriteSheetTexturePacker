@@ -42,8 +42,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="SupportClasses\MgDrawExt.cs" />
+    <Compile Include="SupportClasses\MgExtensions.cs" />
+    <Compile Include="SupportClasses\MgMathExtras.cs" />
+    <Compile Include="SupportClasses\MgStringBuilder.cs" />
+    <Compile Include="ModeSelectSets.cs" />
+    <Compile Include="ModeSelectSprites.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpriteSheet.cs" />
+    <Compile Include="SpriteSheetBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
