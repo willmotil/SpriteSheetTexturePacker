@@ -16,20 +16,15 @@ namespace DynamicSsTexturePacker
     {
         // Listing of directorys in current directory.
         public List<string> directorySubFolders = new List<string>();
-
         // Listing of files in the current directory.
         public List<string> directoryFiles = new List<string>();
-
         // Listing of selected files.
         public List<string> selectedImageFiles = new List<string>();
-
-        // Were we will place textures that will be packed.
-        public List<Texture2D> textures = new List<Texture2D>();
-
 
         public List<string> visualDirectorySubFolders = new List<string>();
         public List<string> visualDirectoryFiles = new List<string>();
         public List<string> visualSelectedImageFiles = new List<string>();
+
         int visualDirectorySubFolderStartIndex = 0;
         int visualDirectoryFilesStartIndex = 0;
         int visualSelectedImagesStartIndex = 0;
@@ -37,15 +32,15 @@ namespace DynamicSsTexturePacker
         int visualListItemsAllowed = 20;
         int visualListItemBoxWidth = 250;
 
+        string command = "none";
+        string command2 = "none";
+        int commandIndex = 0;
 
         RasterizerState rs_scissors_on = new RasterizerState() { ScissorTestEnable = true };
         RasterizerState rs_scissors_off = new RasterizerState() { ScissorTestEnable = false };
 
         public void Update(GameTime gameTime)
         {
-
-
-
             if (command == "FolderBack" )
             {
                 Globals.CurrentDirectory = PathGetParentDirectory(Globals.CurrentDirectory);
@@ -54,13 +49,57 @@ namespace DynamicSsTexturePacker
             }
 
             // need add entire folder.
+            if (command == "Add Folder")
+            {
+                for(int i = 0;i < directoryFiles.Count; i++)
+                {
+                    var f = directoryFiles[i];
+                    bool isgood = true;
+                    foreach (var s in selectedImageFiles)
+                    {
+                        if (s == f)
+                            isgood = false;
+                    }
+                    if (isgood)
+                    {
+                        selectedImageFiles.Add(f);
+                        string[] brokenpath = f.Split('\\');
+                        visualSelectedImageFiles.Add(brokenpath.Last());
+                    }
+                }
+                command = "none";
+                commandIndex = -1;
+            }
 
+            // need load textures button.
+            if (command == "Load Textures")
+            {
+                foreach (var t in Globals.textures)
+                {
+                    t.Dispose();
+                }
+                Globals.textures = new List<Texture2D>();
+                for(int i = 0; i <  selectedImageFiles.Count; i ++)
+                {
+                    string s = selectedImageFiles[i];
+                    using (var stream = new FileStream(s, FileMode.Open))
+                    {
+                        var t = Texture2D.FromStream(Globals.device, stream);
+                        t.Name = visualSelectedImageFiles[i];
+                        Globals.textures.Add(t);
+                    }
+                }
+                command = "none";
+                commandIndex = -1;
+            }
 
-            // need create sets to goto the next mode.
-
-
-            // need create button ... and thats about it.
-
+            // Select Anim Sets
+            if (command == "Select Anim Sets")
+            {
+                command = "none";
+                commandIndex = -1;
+                Globals.mode = "Select Anim Sets";
+            }
 
             if (command == "EnterSubFolder" && commandIndex >= 0)
             {
@@ -99,68 +138,70 @@ namespace DynamicSsTexturePacker
             //selectedImageFiles
         }
 
-        string command = "none";
-        string command2 = "none";
-        int commandIndex = 0;
 
         public void Draw(GameTime gameTime)
         {
+            Rectangle r = new Rectangle();
+
             Globals.spriteBatch.Begin();
 
-            // Draw the individual textures.
-            for (int i = 0; i < textures.Count; i++)
-            {
-                Globals.spriteBatch.Draw(textures[i], new Rectangle(10 + (i * 100), 10, 100, 100), Color.White);
-                Globals.spriteBatch.DrawString(Globals.font, textures[i].Name, new Vector2(10 + (i * 100), (i * 10) + 10), Color.White);
-            }
+            Globals.spriteBatch.DrawString(Globals.font, "Select image files from folders or add all the images from a folder.", new Vector2(10 , 0), Color.White);
 
-            // draw the back button.
-            var r = new Rectangle(new Point(10,10), new Point(50, Globals.font.LineSpacing));
-            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Red);
-            Globals.spriteBatch.DrawString(Globals.font, "Back", r.Location.ToVector2(), Color.Red);
-            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
-            {
-                command = "FolderBack";
-            }
+            r = new Rectangle(new Point(10,20), new Point(100, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "FolderBack", "FolderBack", Color.White, Color.Blue);
 
+            r = new Rectangle(new Point(110, 20), new Point(100, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Add Folder", "Add Folder", Color.White, Color.Blue);
+
+            r = new Rectangle(new Point(210, 20), new Point(100, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Load Textures", "Load Textures", Color.White, Color.Blue);
+
+            r = new Rectangle(new Point(310, 20), new Point(100, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Select Anim Sets", "Select Anim Sets", Color.White, Color.Blue);
 
             Globals.spriteBatch.End();
 
+
             int index = -1;
 
-
-
-            index = VisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, 50),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, 50),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders);
             if (index >= 0)
             {
-                // enter this sub folder.
                 command = "EnterSubFolder";
                 commandIndex = index;
                 visualDirectorySubFolderStartIndex = 0;
                 visualDirectoryFilesStartIndex = 0;
             }
 
-            index = VisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, 50), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, 50), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles);
             if (index >= 0)
             {
-                // select this file.
                 command = "AddFile";
                 commandIndex = index;
             }
 
-            index = VisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, 50) ,ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, 50) ,ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles);
             if (index >= 0)
             {
-                //// un-select this file prolly.
                 command = "RemoveFile";
                 commandIndex = index;
             }
 
             Globals.device.RasterizerState = rs_scissors_off;
-
         }
 
-        public int VisualClickListDisplay(Vector2 position, ref int startIndex, List<string> items, List<string> visualItems)
+        public void DrawCheckClickSetCommand(Rectangle r, string label, string commandName, Color textCol, Color outlineColor)
+        {
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, outlineColor);
+            Globals.spriteBatch.DrawString(Globals.font, label, r.Location.ToVector2(), textCol);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
+                command = commandName;
+        }
+
+        /// <summary>
+        /// While were drawing them we check for clicks waste not want not. Though this whole thing is realatively not performant as it doesn't need to be.
+        /// </summary>
+        public int DrawVisualClickListDisplay(Vector2 position, ref int startIndex, List<string> items, List<string> visualItems)
         {
             Globals.device.RasterizerState = rs_scissors_on;
             Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * Globals.font.LineSpacing));
@@ -168,6 +209,7 @@ namespace DynamicSsTexturePacker
 
             int clickedResult = -1;
             int visualDrawIndex = 0;
+
             // draw a box for moving up.
             var r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * Globals.font.LineSpacing), new Point(50, Globals.font.LineSpacing));
             Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
@@ -175,6 +217,7 @@ namespace DynamicSsTexturePacker
             if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex > 0)
                 startIndex--;
             visualDrawIndex++;
+
             // draw the items.
             for (int i = startIndex; i < startIndex + visualListItemsAllowed; i++)
             {
@@ -192,6 +235,7 @@ namespace DynamicSsTexturePacker
                 }
                 visualDrawIndex++;
             }
+
             // draw the move down box.
             r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * Globals.font.LineSpacing), new Point(50, Globals.font.LineSpacing));
             Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);

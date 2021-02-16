@@ -27,7 +27,34 @@ namespace DynamicSsTexturePacker
         public static GraphicsDevice device;
         public static SpriteBatch spriteBatch;
         public static SpriteFont font;
+        // Does the conversion.
+        public static SpriteSheetCreator ssCreator;
+        // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
+        public static SpriteSheet myGeneratedSpriteSheetInstance;
+        public static List<Texture2D> textures = new List<Texture2D>();
         public static string CurrentDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static string saveDirectory = "";
+        public static string savePath = "";
+        public static string saveFileName = "NewSpriteSheet";
+
+        public static void SetSaveDirectory(string directoryPath)
+        {
+            Globals.saveDirectory = directoryPath;
+            Globals.savePath = Path.Combine(Globals.saveDirectory, Globals.saveFileName);
+            Globals.savePath = Globals.savePath + ".spr";
+        }
+        public static void CreateAndSave(bool openDirectory)
+        {
+            ssCreator = new SpriteSheetCreator();
+            myGeneratedSpriteSheetInstance = new SpriteSheet();
+            ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 1024, 1024, Globals.textures, out myGeneratedSpriteSheetInstance, true, Globals.savePath);
+            if (openDirectory)
+                Process.Start(Path.GetDirectoryName(Globals.savePath));
+        }
+        public static void OpenDirectory(string path)
+        {
+            Process.Start(Path.GetDirectoryName(path));
+        }
     }
 
     public class Game1 : Game
@@ -35,16 +62,6 @@ namespace DynamicSsTexturePacker
 
         ModeSelectSprites modeSelectSprites = new ModeSelectSprites();
         ModeSelectSets modeSelectSets = new ModeSelectSets();
-
-        string saveDirectory = "";
-        string savePath = "";
-        string saveFileName = "NewSpriteSheet.spr";
-
-        // Does the conversion.
-        SpriteSheetCreator ssCreator;
-
-        // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
-        SpriteSheet myGeneratedSpriteSheetInstance;
 
         public Game1()
         {
@@ -63,14 +80,9 @@ namespace DynamicSsTexturePacker
             Globals.device = Globals.graphics.GraphicsDevice;
             MgDrawExt.Initialize(Globals.device, Globals.spriteBatch);
 
-            saveDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileName = "NewSpriteSheet";
-            savePath = Path.Combine(saveDirectory, saveFileName);
-            savePath = savePath + ".spr";
+            Globals.SetSaveDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
             modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
-
-            CreateAndSave();
         }
 
         protected override void UnloadContent()
@@ -90,9 +102,9 @@ namespace DynamicSsTexturePacker
                 case "SelectImages":
                     modeSelectSprites.Update(gameTime);
                     break;
-                //case "DisplaySheet":
-                //    DrawSheetAndShowLabels();
-                //    break;
+                case "Select Anim Sets":
+                    modeSelectSets.Update(gameTime);
+                    break;
             }
 
             base.Update(gameTime);
@@ -107,8 +119,8 @@ namespace DynamicSsTexturePacker
                 case "SelectImages":
                     modeSelectSprites.Draw( gameTime );
                     break;
-                case "DisplaySheet":
-                    DrawSheetAndShowLabels();
+                case "Select Anim Sets":
+                    modeSelectSets.Draw(gameTime);
                     break;
             }
 
@@ -116,52 +128,18 @@ namespace DynamicSsTexturePacker
             base.Draw(gameTime);
         }
 
-        public void DrawSheetAndShowLabels()
-        {
-            Globals.spriteBatch.Begin();
-
-            // Draw the resulting spritesheet.
-            var offset = new Vector2(50, 250);
-            Globals.spriteBatch.Draw(myGeneratedSpriteSheetInstance.textureSheet, offset, Color.White);
-
-            // Draw the names of the sprites in the sheet at their locations allow color change over sprites.
-            for (int i = 0; i < myGeneratedSpriteSheetInstance.sprites.Count; i++)
-            {
-                var spriteName = myGeneratedSpriteSheetInstance.sprites[i].nameOfSprite;
-                var nameoffset = myGeneratedSpriteSheetInstance.sprites[i].sourceRectangle;
-                nameoffset.Location = nameoffset.Location + offset.ToPoint();
-                var color = Color.White;
-                if (nameoffset.Contains(MouseHelper.Pos))
-                    color = Color.Red;
-                Globals.spriteBatch.DrawString(Globals.font, spriteName, nameoffset.Center.ToVector2(), color);
-            }
-            Globals.spriteBatch.End();
-        }
-
         public Texture2D LoadTexture(string FileName)
         {
             return Content.Load<Texture2D>(FileName);
         }
 
-        public void OpenDirectory(string path)
-        {
-            Process.Start(Path.GetDirectoryName(path));
-        }
-
         public void ExampleLoad()
         {
             // Well get the textures.
-            modeSelectSprites.textures.Add(LoadTexture("MonoGameLogoSpliffedup"));
-            modeSelectSprites.textures.Add(LoadTexture("TestOutlineImage"));
-            modeSelectSprites.textures.Add(LoadTexture("filterTestImage"));
-            modeSelectSprites.textures.Add(LoadTexture("sphereImage"));
-        }
-
-        public void CreateAndSave()
-        {
-            ssCreator = new SpriteSheetCreator();
-            ssCreator.MakeSpriteSheet(Globals.device, saveFileName, 1024, 1024, modeSelectSprites.textures, out myGeneratedSpriteSheetInstance, true, savePath);
-            OpenDirectory(savePath);
+            Globals.textures.Add(LoadTexture("MonoGameLogoSpliffedup"));
+            Globals.textures.Add(LoadTexture("TestOutlineImage"));
+            Globals.textures.Add(LoadTexture("filterTestImage"));
+            Globals.textures.Add(LoadTexture("sphereImage"));
         }
 
     }

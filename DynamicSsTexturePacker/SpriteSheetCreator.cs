@@ -28,10 +28,17 @@ namespace DynamicSsTexturePacker
             if (amountAdded == len)
                 CreateSpriteSheetFromSprites(sheetName, w, h, ref spriteSheet, out ssColorArray);
             else
+            {
                 spriteSheet = null;
+            }
 
             if (saveToFile)
-                Save(savepath, spriteSheet, ssColorArray, saveColorArrayInsteadOfTexture);
+            {
+                if (spriteSheet != null)
+                    Save(savepath, spriteSheet, ssColorArray, saveColorArrayInsteadOfTexture);
+                else
+                    Debug.Assert(false, "The SpriteSheet cant be saved as its null... the images probably don't fit in the sheet.");
+            }
         }
 
         public void Save(string filepath, SpriteSheet ss, Color[] ssColorArray, bool saveColorArrayInsteadOfTexture)
