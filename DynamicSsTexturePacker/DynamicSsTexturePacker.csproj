@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F5838AA0-4DD0-4D88-9E4C-8BF7B3C6E2CB}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DynamicSsTexturePacker</RootNamespace>
     <AssemblyName>DynamicSsTexturePacker</AssemblyName>
@@ -40,9 +40,13 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
-    <Compile Include="SupportClasses\MgDrawExt.cs" />
+    <Compile Include="SupportClasses\FileAndPathingClasses.cs" />
+    <Compile Include="SupportClasses\MgDrawExtensions.cs" />
     <Compile Include="SupportClasses\MgExtensions.cs" />
     <Compile Include="SupportClasses\MgMathExtras.cs" />
     <Compile Include="SupportClasses\MgStringBuilder.cs" />
@@ -51,7 +55,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpriteSheet.cs" />
-    <Compile Include="SpriteSheetBuilder.cs" />
+    <Compile Include="SpriteSheetCreator.cs" />
+    <Compile Include="SupportClasses\MouseHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

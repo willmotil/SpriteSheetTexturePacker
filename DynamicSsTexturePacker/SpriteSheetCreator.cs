@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DynamicSsTexturePacker
 {
-    public class SpriteSheetBuilder
+    public class SpriteSheetCreator
     {
         GraphicsDevice graphics;
 

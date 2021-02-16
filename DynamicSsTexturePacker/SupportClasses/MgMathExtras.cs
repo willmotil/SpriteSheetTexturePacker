@@ -150,6 +150,7 @@ namespace Microsoft.Xna.Framework
             return new Vector2(plotX, plotY);
         }
 
+        // haha use the other one Bezier its really the same thing.
         public static Vector3 BiCubicSubdivision(Vector3 a0, Vector3 a1, Vector3 a2, Vector3 a3, float time)
         {
             return (((((a3 - a2) * time + a2) - ((a2 - a1) * time + a1)) * time + ((a2 - a1) * time + a1)) - ((((a2 - a1) * time + a1) - ((a1 - a0) * time + a0)) * time + ((a1 - a0) * time + a0))) * time + ((((a2 - a1) * time + a1) - ((a1 - a0) * time + a0)) * time + ((a1 - a0) * time + a0));
@@ -363,7 +364,7 @@ namespace Microsoft.Xna.Framework
         }
 
         /// <summary>
-        /// the asin a cosine a given vector scaled by its distance.
+        /// the asin,  a cosine a given vector scaled by its distance.
         /// </summary>
         public static Vector2 InnerSquareAsinACosVector(Vector2 directionVector)
         {
