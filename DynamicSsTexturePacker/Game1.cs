@@ -69,7 +69,11 @@ namespace DynamicSsTexturePacker
             Content.RootDirectory = "Content";
             Window.AllowUserResizing = true;
             this.IsMouseVisible = true;
+
+            Window.TextInput += modeSelectSets.TakeText;
         }
+
+
 
         protected override void Initialize(){   base.Initialize();}
 

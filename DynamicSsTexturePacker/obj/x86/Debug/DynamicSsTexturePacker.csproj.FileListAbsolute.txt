@@ -99,7 +99,6 @@ C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x8
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.csproj.CopyComplete
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.exe
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.pdb
-C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.csprojAssemblyReference.cache
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\bin\Windows\x86\Debug\Content\filterTestImage.xnb
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\bin\Windows\x86\Debug\Content\MgFont.xnb
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\bin\Windows\x86\Debug\Content\MonoGameLogoSpliffedup.xnb

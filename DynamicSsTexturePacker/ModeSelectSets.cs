@@ -20,7 +20,6 @@ namespace DynamicSsTexturePacker
         public void Update(GameTime gameTime)
         {
 
-
             if (command == "CreateSheet")
             {
                 Globals.CreateAndSave(false);
@@ -33,6 +32,30 @@ namespace DynamicSsTexturePacker
                 command = "none";
             }
 
+            if (command == "NameFile")
+            {
+
+            }
+
+        }
+
+        string newSaveName = Globals.saveFileName;
+        public void TakeText(Object sender, TextInputEventArgs e)
+        {
+            if (command == "NameFile")
+            {
+                newSaveName += e.Character;
+
+                if (Keys.Enter.IsKeyDown())
+                {
+                    Globals.saveFileName = newSaveName;
+                    command = "none";
+                }
+                if (Keys.Back.IsKeyDown())
+                {
+                    newSaveName = "";
+                }
+            }
         }
 
         public void Draw(GameTime gameTime)
@@ -62,6 +85,10 @@ namespace DynamicSsTexturePacker
             // open the current save path.
             r = new Rectangle(new Point(110, 20), new Point(100, Globals.font.LineSpacing));
             DrawCheckClickSetCommand(r, "OpenSavePath", "OpenSavePath", Color.White, Color.Blue);
+
+            // name file.
+            r = new Rectangle(new Point(10, Globals.font.LineSpacing + 20), new Point(100, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, newSaveName, "NameFile", Color.White, Color.Blue);
 
 
             Globals.spriteBatch.End();
