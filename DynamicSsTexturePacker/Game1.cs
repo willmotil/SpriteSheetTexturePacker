@@ -32,10 +32,13 @@ namespace DynamicSsTexturePacker
         // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
         public static SpriteSheet myGeneratedSpriteSheetInstance;
         public static List<Texture2D> textures = new List<Texture2D>();
-        public static string CurrentDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static string CurrentDirectory = Environment.CurrentDirectory; //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string saveDirectory = "";
         public static string savePath = "";
         public static string saveFileName = "NewSpriteSheet";
+
+        public static RasterizerState rs_scissors_on = new RasterizerState() { ScissorTestEnable = true };
+        public static RasterizerState rs_scissors_off = new RasterizerState() { ScissorTestEnable = false };
 
         public static void SetSaveDirectory(string directoryPath)
         {
@@ -47,7 +50,7 @@ namespace DynamicSsTexturePacker
         {
             ssCreator = new SpriteSheetCreator();
             myGeneratedSpriteSheetInstance = new SpriteSheet();
-            ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 1024, 1024, Globals.textures, out myGeneratedSpriteSheetInstance, true, Globals.savePath);
+            ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 2048, 2048, Globals.textures, out myGeneratedSpriteSheetInstance, true, Globals.savePath);
             if (openDirectory)
                 Process.Start(Path.GetDirectoryName(Globals.savePath));
         }

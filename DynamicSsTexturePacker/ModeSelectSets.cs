@@ -16,9 +16,19 @@ namespace DynamicSsTexturePacker
         string command2 = "none";
         int commandIndex = 0;
 
+        int visualSelectedImagesStartIndex = 0;
+
+
+
 
         public void Update(GameTime gameTime)
         {
+
+            if (command == "SelectImages")
+            {
+                Globals.mode = "SelectImages";
+                command = "none";
+            }
 
             if (command == "CreateSheet")
             {
@@ -62,37 +72,61 @@ namespace DynamicSsTexturePacker
         {
             Rectangle r = new Rectangle();
 
+            int lh = Globals.font.LineSpacing;
+            int y = lh * 0;
+            int h = lh * 1;
+            int w = Globals.device.Viewport.Width - 10;
+
             Globals.spriteBatch.Begin();
 
-            // Draw the individual textures.
-            for (int i = 0; i < Globals.textures.Count; i++)
-            {
-                Globals.spriteBatch.Draw(Globals.textures[i], new Rectangle(10 + (i * 200), 100, 200, 200), Color.White);
-                Globals.spriteBatch.DrawString(Globals.font, Globals.textures[i].Name, new Vector2(10 + (i * 200), (i * 10) + 100), Color.White);
-            }
-            // Draw the sheet if possible.
-            if (Globals.myGeneratedSpriteSheetInstance != null)
-                DrawSheetAndShowLabels();
 
-
+            int buttonLength = 200;
 
             Globals.spriteBatch.DrawString(Globals.font, "Set groups of images to be animation sets.", new Vector2(10, 0), Color.White);
 
+            // go back to sprite select.
+            r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Go back to select images", "SelectImages", Color.White, Color.Blue);
+
             // draw the create sheet button.
-            r = new Rectangle(new Point(10, 20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "CreateSheet", "CreateSheet", Color.White, Color.Blue);
+            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Create sheet", "CreateSheet", Color.White, Color.Blue);
 
             // open the current save path.
-            r = new Rectangle(new Point(110, 20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "OpenSavePath", "OpenSavePath", Color.White, Color.Blue);
+            r = new Rectangle(new Point(buttonLength * 2 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Open save path", "OpenSavePath", Color.White, Color.Blue);
+
+            h = lh * 2;
 
             // name file.
-            r = new Rectangle(new Point(10, Globals.font.LineSpacing + 20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, newSaveName, "NameFile", Color.White, Color.Blue);
+            r = new Rectangle(new Point(10, Globals.font.LineSpacing + h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawTextboxClickSetCommand(r,"Name spritesheet" , newSaveName, "NameFile", Color.Black, Color.Blue);
 
+            y = lh * 12;
+            h = Globals.device.Viewport.Height - y;
+
+            // Draw the sheet if possible.
+            if (Globals.myGeneratedSpriteSheetInstance != null)
+                DrawSheetAndShowLabels(new Rectangle(300, y, Globals.myGeneratedSpriteSheetInstance.sheetWidth, Globals.myGeneratedSpriteSheetInstance.sheetHeight));
 
             Globals.spriteBatch.End();
+
+
+            y = lh * 6;
+            h = lh * 5;
+
+            // Draw the individual textures when clicked add them to a set that is selected.
+            r = new Rectangle(10 + 0, y, 200, h);
+            int index = DrawVisualClickListDisplay(r.Location.ToVector2(), 200, 50, 5, ref visualSelectedImagesStartIndex, Globals.textures);
+            if (index >= 0)
+            {
+                //command = "EnterSubFolder";
+                //commandIndex = index;
+                //visualDirectorySubFolderStartIndex = 0;
+                //visualDirectoryFilesStartIndex = 0;
+            }
         }
+
 
         public void DrawCheckClickSetCommand(Rectangle r, string label ,string commandName, Color textCol, Color outlineColor)
         {
@@ -102,24 +136,136 @@ namespace DynamicSsTexturePacker
                 command = commandName;
         }
 
-        public void DrawSheetAndShowLabels()
+        public void DrawTextboxClickSetCommand(Rectangle r, string textBoxName , string textValue , string commandName, Color textCol, Color outlineColor)
+        {
+            Globals.spriteBatch.DrawString(Globals.font, textBoxName, r.Location.ToVector2(), outlineColor);
+            Rectangle r2 = r;
+            r2.Y += Globals.font.LineSpacing;
+            Globals.spriteBatch.DrawRectangleOutline(r2, 1, outlineColor);
+            Globals.spriteBatch.DrawString(Globals.font, textValue, r2.Location.ToVector2(), textCol);
+            if (r2.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
+                command = commandName;
+        }
+
+        public void DrawSheetAndShowLabels(Rectangle r)
         {
             // Draw the resulting spritesheet.
-            var offset = new Vector2(50, 450);
-            Globals.spriteBatch.Draw(Globals.myGeneratedSpriteSheetInstance.textureSheet, offset, Color.White);
+            Globals.spriteBatch.Draw(Globals.myGeneratedSpriteSheetInstance.textureSheet, r, Color.White);
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Red);
 
             // Draw the names of the sprites in the sheet at their locations allow color change over sprites.
             for (int i = 0; i < Globals.myGeneratedSpriteSheetInstance.sprites.Count; i++)
             {
                 var spriteName = Globals.myGeneratedSpriteSheetInstance.sprites[i].nameOfSprite;
                 var nameoffset = Globals.myGeneratedSpriteSheetInstance.sprites[i].sourceRectangle;
-                nameoffset.Location = nameoffset.Location + offset.ToPoint();
+                nameoffset.Location = nameoffset.Location + r.Location;
                 var color = Color.White;
                 if (nameoffset.Contains(MouseHelper.Pos))
                     color = Color.Red;
                 Globals.spriteBatch.DrawString(Globals.font, spriteName, nameoffset.Center.ToVector2(), color);
+                Globals.spriteBatch.DrawRectangleOutline(nameoffset, 1, Color.Red);
             }
         }
+
+        /// <summary>
+        /// While were drawing them we check for clicks waste not want not. Though this whole thing is realatively not performant as it doesn't need to be.
+        /// </summary>
+        public int DrawVisualClickListDisplay(Vector2 position, ref int startIndex, int visualListItemBoxWidth, int visualListItemsAllowed,  List<string> items, List<string> visualItems)
+        {
+            Globals.device.RasterizerState = Globals.rs_scissors_on;
+            Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * Globals.font.LineSpacing));
+            Globals.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, Globals.rs_scissors_on, null, null);
+
+            int clickedResult = -1;
+            int visualDrawIndex = 0;
+
+            // draw a box for moving up.
+            var r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * Globals.font.LineSpacing), new Point(50, Globals.font.LineSpacing));
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
+            Globals.spriteBatch.DrawString(Globals.font, "Up", r.Location.ToVector2(), Color.Green);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex > 0)
+                startIndex--;
+            visualDrawIndex++;
+
+            // draw the items.
+            for (int i = startIndex; i < startIndex + visualListItemsAllowed; i++)
+            {
+                r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * Globals.font.LineSpacing), new Point(20, Globals.font.LineSpacing));
+                var re = new Vector2(r.Right, r.Top);
+                if (i < items.Count)
+                {
+                    Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.White);
+                    Globals.spriteBatch.DrawString(Globals.font, i.ToString(), r.Location.ToVector2(), Color.White);
+                    Globals.spriteBatch.DrawString(Globals.font, visualItems[i], re, Color.White);
+                    if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
+                    {
+                        clickedResult = i;
+                    }
+                }
+                visualDrawIndex++;
+            }
+
+            // draw the move down box.
+            r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * Globals.font.LineSpacing), new Point(50, Globals.font.LineSpacing));
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
+            Globals.spriteBatch.DrawString(Globals.font, "Down", r.Location.ToVector2(), Color.Green);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex < items.Count)
+                startIndex++;
+
+            Globals.spriteBatch.End();
+            return clickedResult;
+        }
+
+        /// <summary>
+        /// While were drawing them we check for clicks waste not want not. Though this whole thing is realatively not performant as it doesn't need to be.
+        /// </summary>
+        public int DrawVisualClickListDisplay(Vector2 position, int visualListItemBoxWidth, int visualItemHeight, int visualListItemsAllowed, ref int startIndex, List<Texture2D> items)
+        {
+            int downSpacing = visualItemHeight;
+            Globals.device.RasterizerState = Globals.rs_scissors_on;
+            Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * downSpacing));
+            Globals.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, Globals.rs_scissors_on, null, null);
+
+            int clickedResult = -1;
+            int visualDrawIndex = 0;
+
+            // draw a box for moving up.
+            var r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * downSpacing), new Point(50, downSpacing));
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
+            Globals.spriteBatch.DrawString(Globals.font, "Up", r.Location.ToVector2(), Color.Green);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex > 0)
+                startIndex--;
+            visualDrawIndex++;
+
+            // draw the items.
+            for (int i = startIndex; i < startIndex + visualListItemsAllowed; i++)
+            {
+                r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * downSpacing), new Point(visualListItemBoxWidth, downSpacing));
+                var re = new Vector2(r.Left + 25, r.Top);
+                if (i < items.Count)
+                {
+                    Globals.spriteBatch.Draw(items[i], r, Color.White);
+                    Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.White);
+                    Globals.spriteBatch.DrawString(Globals.font, i.ToString(), r.Location.ToVector2(), Color.White);
+                    Globals.spriteBatch.DrawString(Globals.font, items[i].Name, re, Color.White);
+                    if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
+                    {
+                        clickedResult = i;
+                    }
+                }
+                visualDrawIndex++;
+            }
+            // draw the move down box.
+            r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * downSpacing), new Point(50, downSpacing));
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
+            Globals.spriteBatch.DrawString(Globals.font, "Down", r.Location.ToVector2(), Color.Green);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex < items.Count)
+                startIndex++;
+
+            Globals.spriteBatch.End();
+            return clickedResult;
+        }
+
 
     }
 }

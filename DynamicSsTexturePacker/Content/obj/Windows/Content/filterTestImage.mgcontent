@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/filterTestImage.png</SourceFile>
-  <SourceTime>2021-02-15T04:31:32.1591351-05:00</SourceTime>
-  <DestFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/bin/Windows/Content/filterTestImage.xnb</DestFile>
-  <DestTime>2021-02-17T01:04:56.8771843-05:00</DestTime>
+  <SourceFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/filterTestImage.png</SourceFile>
+  <SourceTime>2019-01-09T22:51:15.6484416-05:00</SourceTime>
+  <DestFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/bin/Windows/Content/filterTestImage.xnb</DestFile>
+  <DestTime>2021-02-18T13:28:14.6729891-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-09-23T17:55:52-04:00</ImporterTime>
+  <ImporterTime>2019-10-15T15:28:30-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-09-23T17:55:52-04:00</ProcessorTime>
+  <ProcessorTime>2019-10-15T15:28:30-04:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

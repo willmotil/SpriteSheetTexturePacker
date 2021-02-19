@@ -36,9 +36,6 @@ namespace DynamicSsTexturePacker
         string command2 = "none";
         int commandIndex = 0;
 
-        RasterizerState rs_scissors_on = new RasterizerState() { ScissorTestEnable = true };
-        RasterizerState rs_scissors_off = new RasterizerState() { ScissorTestEnable = false };
-
         public void Update(GameTime gameTime)
         {
             if (command == "FolderBack" )
@@ -71,7 +68,7 @@ namespace DynamicSsTexturePacker
                 commandIndex = -1;
             }
 
-            // need load textures button.
+            // load textures button.
             if (command == "Load Textures")
             {
                 foreach (var t in Globals.textures)
@@ -89,16 +86,9 @@ namespace DynamicSsTexturePacker
                         Globals.textures.Add(t);
                     }
                 }
-                command = "none";
-                commandIndex = -1;
-            }
-
-            // Select Anim Sets
-            if (command == "Select Anim Sets")
-            {
-                command = "none";
-                commandIndex = -1;
                 Globals.mode = "Select Anim Sets";
+                command = "none";
+                commandIndex = -1;
             }
 
             if (command == "EnterSubFolder" && commandIndex >= 0)
@@ -143,28 +133,32 @@ namespace DynamicSsTexturePacker
         {
             Rectangle r = new Rectangle();
 
+
             Globals.spriteBatch.Begin();
+
+            int buttonLength = 200;
+            int lh = Globals.font.LineSpacing;
+            int y = lh * 2;
 
             Globals.spriteBatch.DrawString(Globals.font, "Select image files from folders or add all the images from a folder.", new Vector2(10 , 0), Color.White);
 
-            r = new Rectangle(new Point(10,20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "FolderBack", "FolderBack", Color.White, Color.Blue);
+            r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Directory back", "FolderBack", Color.White, Color.Blue);
 
-            r = new Rectangle(new Point(110, 20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Add Folder", "Add Folder", Color.White, Color.Blue);
+            r = new Rectangle(new Point(buttonLength *1 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Add all files from folder", "Add Folder", Color.White, Color.Blue);
 
-            r = new Rectangle(new Point(210, 20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Load Textures", "Load Textures", Color.White, Color.Blue);
-
-            r = new Rectangle(new Point(310, 20), new Point(100, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Select Anim Sets", "Select Anim Sets", Color.White, Color.Blue);
+            r = new Rectangle(new Point(buttonLength * 2 + 10, y), new Point(buttonLength + 50, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Load textures and select anim sets", "Load Textures", Color.White, Color.Blue);
 
             Globals.spriteBatch.End();
 
 
-            int index = -1;
 
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, 50),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders);
+            int index = -1;
+            y = lh * 6;
+
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, y),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders);
             if (index >= 0)
             {
                 command = "EnterSubFolder";
@@ -173,21 +167,21 @@ namespace DynamicSsTexturePacker
                 visualDirectoryFilesStartIndex = 0;
             }
 
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, 50), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, y), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles);
             if (index >= 0)
             {
                 command = "AddFile";
                 commandIndex = index;
             }
 
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, 50) ,ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, y) , ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles);
             if (index >= 0)
             {
                 command = "RemoveFile";
                 commandIndex = index;
             }
 
-            Globals.device.RasterizerState = rs_scissors_off;
+            Globals.device.RasterizerState = Globals.rs_scissors_off;
         }
 
         public void DrawCheckClickSetCommand(Rectangle r, string label, string commandName, Color textCol, Color outlineColor)
@@ -203,9 +197,9 @@ namespace DynamicSsTexturePacker
         /// </summary>
         public int DrawVisualClickListDisplay(Vector2 position, ref int startIndex, List<string> items, List<string> visualItems)
         {
-            Globals.device.RasterizerState = rs_scissors_on;
+            Globals.device.RasterizerState = Globals.rs_scissors_on;
             Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * Globals.font.LineSpacing));
-            Globals.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, rs_scissors_on, null, null);
+            Globals.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, Globals.rs_scissors_on, null, null);
 
             int clickedResult = -1;
             int visualDrawIndex = 0;

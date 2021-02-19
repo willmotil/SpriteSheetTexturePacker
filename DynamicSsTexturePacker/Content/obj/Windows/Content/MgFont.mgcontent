@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/MgFont.spritefont</SourceFile>
-  <SourceTime>2021-02-15T04:31:32.0194373-05:00</SourceTime>
-  <DestFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/bin/Windows/Content/MgFont.xnb</DestFile>
-  <DestTime>2021-02-17T01:05:01.1156453-05:00</DestTime>
+  <SourceFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/MgFont.spritefont</SourceFile>
+  <SourceTime>2020-12-30T04:29:41.7846642-05:00</SourceTime>
+  <DestFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/DynamicSsTexturePacker/Content/bin/Windows/Content/MgFont.xnb</DestFile>
+  <DestTime>2021-02-18T13:28:16.1775122-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
-  <ImporterTime>2018-09-23T17:55:52-04:00</ImporterTime>
+  <ImporterTime>2019-10-15T15:28:30-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
-  <ProcessorTime>2018-09-23T17:55:52-04:00</ProcessorTime>
+  <ProcessorTime>2019-10-15T15:28:30-04:00</ProcessorTime>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
     <Value>True</Value>
