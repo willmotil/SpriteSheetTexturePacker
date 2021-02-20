@@ -124,4 +124,3 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.csproj.CopyComplete
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.exe
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.pdb
-C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\DynamicSsTexturePacker\obj\x86\Debug\DynamicSsTexturePacker.csprojAssemblyReference.cache

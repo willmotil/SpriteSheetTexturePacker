@@ -20,7 +20,6 @@ namespace DynamicSsTexturePacker
         public void Add(string name, Texture2D texture, Rectangle source)
         {
             sprites.Add(new Sprite(name, texture, source));
-            //return sprites[sprites.Count - 1];
         }
         public void Remove(Sprite s)
         {
@@ -50,5 +49,13 @@ namespace DynamicSsTexturePacker
             public Texture2D texture;
             public Rectangle sourceRectangle;
         }
+
+        public class Set
+        {
+            public string nameOfAnimation = "";
+            public float time = .25f;
+            public List<int> spriteIndexs = new List<int>();
+        }
+
     }
 }

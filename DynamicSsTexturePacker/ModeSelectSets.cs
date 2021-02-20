@@ -9,16 +9,24 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DynamicSsTexturePacker
 {
+
+    public class Set
+    {
+        public string name = "";
+        public List<int> items = new List<int>();
+    }
+
     public class ModeSelectSets
     {
-
         string command = "none";
         string command2 = "none";
         int commandIndex = 0;
 
         int visualSelectedImagesStartIndex = 0;
+        int visualSelectedSetStartIndex = 0;
 
 
+        List<Set> sets = new List<Set>();
 
 
         public void Update(GameTime gameTime)
@@ -42,14 +50,38 @@ namespace DynamicSsTexturePacker
                 command = "none";
             }
 
-            if (command == "NameFile")
+            if (command == "AddNewSet")
             {
+                int index = sets.Count;
+                currentSetIndex = index;
+                Set set = new Set();
+                setName = "set_" + index.ToString();
+                set.name = setName;
+                sets.Add(set);
+                command = "none";
+            }
 
+            if (command == "AddToCurrentSet")
+            {
+                if (currentSetIndex >= 0)
+                {
+                    var textureIndex = commandIndex;
+                    sets[currentSetIndex].items.Add(textureIndex);
+                }
+                command = "none";
+            }
+
+            if (command == "RemoveFromCurrentSet")
+            {
+                command = "none";
             }
 
         }
 
         string newSaveName = Globals.saveFileName;
+        string setName = "";
+        int currentSetIndex = -1;
+
         public void TakeText(Object sender, TextInputEventArgs e)
         {
             if (command == "NameFile")
@@ -66,6 +98,24 @@ namespace DynamicSsTexturePacker
                     newSaveName = "";
                 }
             }
+
+            if (command == "NameSet")
+            {
+                setName += e.Character;
+
+                if (Keys.Enter.IsKeyDown())
+                {
+                    sets[currentSetIndex].name = setName;
+                    command = "none";
+                }
+                if (Keys.Back.IsKeyDown())
+                {
+                    Set n = sets[currentSetIndex];
+                    setName = "";
+                    sets[currentSetIndex].name = setName;
+                }
+            }
+
         }
 
         public void Draw(GameTime gameTime)
@@ -88,19 +138,23 @@ namespace DynamicSsTexturePacker
             r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
             DrawCheckClickSetCommand(r, "Go back to select images", "SelectImages", Color.White, Color.Blue);
 
-            // draw the create sheet button.
-            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Create sheet", "CreateSheet", Color.White, Color.Blue);
+            h = lh * 2;
 
-            // open the current save path.
-            r = new Rectangle(new Point(buttonLength * 2 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Open save path", "OpenSavePath", Color.White, Color.Blue);
+            // draw the create sheet button.
+            r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Create sprite sheet", "CreateSheet", Color.White, Color.Blue);
 
             h = lh * 2;
 
             // name file.
             r = new Rectangle(new Point(10, Globals.font.LineSpacing + h), new Point(buttonLength, Globals.font.LineSpacing));
             DrawTextboxClickSetCommand(r,"Name spritesheet" , newSaveName, "NameFile", Color.Black, Color.Blue);
+
+            h = lh * 6;
+
+            // open the current save path.
+            r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Open save path", "OpenSavePath", Color.White, Color.Blue);
 
             y = lh * 12;
             h = Globals.device.Viewport.Height - y;
@@ -109,24 +163,48 @@ namespace DynamicSsTexturePacker
             if (Globals.myGeneratedSpriteSheetInstance != null)
                 DrawSheetAndShowLabels(new Rectangle(300, y, Globals.myGeneratedSpriteSheetInstance.sheetWidth, Globals.myGeneratedSpriteSheetInstance.sheetHeight));
 
+
+            y = lh * 6;
+            h = lh * 2;
+            // new set.
+            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Add new set", "AddNewSet", Color.White, Color.Blue);
+
+            h = lh * 3;
+
+            // name file.
+            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawTextboxClickSetCommand(r, "Name set", setName, "NameSet", Color.White, Color.Blue);
+
+
             Globals.spriteBatch.End();
 
 
-            y = lh * 6;
+            y = lh * 8;
             h = lh * 5;
 
             // Draw the individual textures when clicked add them to a set that is selected.
-            r = new Rectangle(10 + 0, y, 200, h);
+            r = new Rectangle(buttonLength * 0 + 10, y, buttonLength, h);
             int index = DrawVisualClickListDisplay(r.Location.ToVector2(), 200, 50, 5, ref visualSelectedImagesStartIndex, Globals.textures);
             if (index >= 0)
             {
-                //command = "EnterSubFolder";
-                //commandIndex = index;
-                //visualDirectorySubFolderStartIndex = 0;
-                //visualDirectoryFilesStartIndex = 0;
+                command = "AddToCurrentSet";
+                commandIndex = index;
             }
-        }
 
+            if (sets.Count > 0)
+            {
+                var set = sets[currentSetIndex];
+                r = new Rectangle(buttonLength * 1 + 10, y, buttonLength, h);
+                index = DrawVisualClickListDisplay(r.Location.ToVector2(), 200, 50, 5, ref visualSelectedSetStartIndex, set);
+                if (index >= 0)
+                {
+                    command = "RemoveFromCurrentSet";
+                    commandIndex = index;
+                }
+            }
+
+        }
 
         public void DrawCheckClickSetCommand(Rectangle r, string label ,string commandName, Color textCol, Color outlineColor)
         {
@@ -266,6 +344,57 @@ namespace DynamicSsTexturePacker
             return clickedResult;
         }
 
+
+        /// <summary>
+        /// While were drawing them we check for clicks waste not want not. Though this whole thing is realatively not performant as it doesn't need to be.
+        /// </summary>
+        public int DrawVisualClickListDisplay(Vector2 position, int visualListItemBoxWidth, int visualItemHeight, int visualListItemsAllowed, ref int startIndex, Set set)
+        {
+            List<int> items = set.items;
+            int downSpacing = visualItemHeight;
+            Globals.device.RasterizerState = Globals.rs_scissors_on;
+            Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * downSpacing));
+            Globals.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, Globals.rs_scissors_on, null, null);
+
+            int clickedResult = -1;
+            int visualDrawIndex = 0;
+
+            // draw a box for moving up.
+            var r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * downSpacing), new Point(50, downSpacing));
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
+            Globals.spriteBatch.DrawString(Globals.font, "Up", r.Location.ToVector2(), Color.Green);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex > 0)
+                startIndex--;
+            visualDrawIndex++;
+
+            // draw the items.
+            for (int i = startIndex; i < startIndex + visualListItemsAllowed; i++)
+            {
+                r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * downSpacing), new Point(visualListItemBoxWidth, downSpacing));
+                var re = new Vector2(r.Left + 25, r.Top);
+                if (i < items.Count)
+                {
+                    var t = Globals.textures[items[i]];
+                    Globals.spriteBatch.Draw(t, r, Color.White);
+                    Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.White);
+                    Globals.spriteBatch.DrawString(Globals.font, i.ToString(), r.Location.ToVector2(), Color.White);
+                    if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
+                    {
+                        clickedResult = i;
+                    }
+                }
+                visualDrawIndex++;
+            }
+            // draw the move down box.
+            r = new Rectangle(position.ToPoint() + new Point(0, visualDrawIndex * downSpacing), new Point(50, downSpacing));
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Green);
+            Globals.spriteBatch.DrawString(Globals.font, "Down", r.Location.ToVector2(), Color.Green);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased && startIndex < items.Count)
+                startIndex++;
+
+            Globals.spriteBatch.End();
+            return clickedResult;
+        }
 
     }
 }
