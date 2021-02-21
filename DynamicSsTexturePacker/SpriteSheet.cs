@@ -16,6 +16,7 @@ namespace DynamicSsTexturePacker
         public int sheetHeight = 0;
         public Texture2D textureSheet;
         public List<Sprite> sprites = new List<Sprite>();
+        public List<Set> sets = new List<Set>();
 
         public void Add(string name, Texture2D texture, Rectangle source)
         {

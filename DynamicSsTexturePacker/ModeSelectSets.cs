@@ -13,6 +13,7 @@ namespace DynamicSsTexturePacker
     public class Set
     {
         public string name = "";
+        public float time = .25f;
         public List<int> items = new List<int>();
     }
 
@@ -82,6 +83,9 @@ namespace DynamicSsTexturePacker
         string setName = "";
         int currentSetIndex = -1;
 
+        string setTimeString = ".5f";
+        float setTime = .5f;
+
         public void TakeText(Object sender, TextInputEventArgs e)
         {
             if (command == "NameFile")
@@ -113,6 +117,32 @@ namespace DynamicSsTexturePacker
                     Set n = sets[currentSetIndex];
                     setName = "";
                     sets[currentSetIndex].name = setName;
+                }
+            }
+
+            if (command == "SetTime")
+            {
+                setTimeString += e.Character;
+
+                if (Keys.Enter.IsKeyDown())
+                {
+                    float tempResult;
+                    if(float.TryParse(setTimeString, out tempResult))
+                    {
+                        sets[currentSetIndex].time = tempResult;
+                        setTime = tempResult;
+                        setTimeString = tempResult.ToString();
+                    }
+                    else
+                    {
+                        setTimeString = setTime.ToString();
+                    }
+                    command = "none";
+                }
+                if (Keys.Back.IsKeyDown())
+                {
+                    Set n = sets[currentSetIndex];
+                    setTimeString = "";
                 }
             }
 
@@ -172,9 +202,15 @@ namespace DynamicSsTexturePacker
 
             h = lh * 3;
 
-            // name file.
+            // name set.
             r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
             DrawTextboxClickSetCommand(r, "Name set", setName, "NameSet", Color.White, Color.Blue);
+
+            h = lh * 5;
+
+            // set time.
+            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawTextboxClickSetCommand(r, "Set time", setTimeString , "SetTime", Color.White, Color.Blue);
 
 
             Globals.spriteBatch.End();
