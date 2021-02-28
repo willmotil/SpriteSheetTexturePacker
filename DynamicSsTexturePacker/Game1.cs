@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Input;
 //using SpriteSheetXnbReader;
 
 
+// ToDo rework the sprite sheet class and the content pipely that uses it to accomidate sets in the sheet.
+
+
 // References for additional extras to make this pipelinable...
 // Tom Spillman and Andy Dunn
 // https://channel9.msdn.com/Series/Advanced-MonoGame-for-Windows-Phone-and-Windows-Store-Games/03?term=monogame%20content%20pipeline&lang-en=true
@@ -16,6 +19,27 @@ using Microsoft.Xna.Framework.Input;
 
 // https://github.com/learn-monogame/learn-monogame.github.io/discussions/9#discussioncomment-371850
 // Newest version of mg supports drag and drop.
+
+/// This is the main type for your game.
+/// 
+/// This project uses the monogame nuget pcl.
+/// This project requires you to change the project appication properties to target,  .Net framework 4.6.1 , to match the nuget pcl.
+/// 
+/// This project adds a reference to the SpriteSheetXnbReader. to the game1
+/// This project adds a reference to the SpriteSheetXnbPipelineCreator. to the game1
+/// 
+/// SpriteSheetXnbPipelineCreator adds a reference to SpriteSheetXnbReader.
+/// 
+/// 
+/// This project adds the mgcb references for the spritesheet pipline dll to the monogame pipeline tool.
+/// #-------------------------------- References --------------------------------#
+///   
+///   /reference:..\..\SpriteSheetXnbReader\bin\Debug\SpriteSheetXnbReader.dll
+///   /reference:..\..\SpriteSheetXnbPipelineCreator\bin\Debug\SpriteSheetXnbPipelineCreator.dll
+///
+///   #---------------------------------- Content ---------------------------------#
+///   
+
 
 namespace DynamicSsTexturePacker
 {
