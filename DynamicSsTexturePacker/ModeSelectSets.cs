@@ -10,13 +10,6 @@ using Microsoft.Xna.Framework.Input;
 namespace DynamicSsTexturePacker
 {
 
-    public class Set
-    {
-        public string name = "";
-        public float time = .25f;
-        public List<int> items = new List<int>();
-    }
-
     public class ModeSelectSets
     {
         string command = "none";
@@ -25,10 +18,6 @@ namespace DynamicSsTexturePacker
 
         int visualSelectedImagesStartIndex = 0;
         int visualSelectedSetStartIndex = 0;
-
-
-        List<Set> sets = new List<Set>();
-
 
         public void Update(GameTime gameTime)
         {
@@ -53,12 +42,12 @@ namespace DynamicSsTexturePacker
 
             if (command == "AddNewSet")
             {
-                int index = sets.Count;
+                int index = Globals.tempSets.Count;
                 currentSetIndex = index;
-                Set set = new Set();
+                SpriteSheet.Set set = new SpriteSheet.Set();
                 setName = "set_" + index.ToString();
-                set.name = setName;
-                sets.Add(set);
+                set.nameOfAnimation = setName;
+                Globals.tempSets.Add(set);
                 command = "none";
             }
 
@@ -67,7 +56,7 @@ namespace DynamicSsTexturePacker
                 if (currentSetIndex >= 0)
                 {
                     var textureIndex = commandIndex;
-                    sets[currentSetIndex].items.Add(textureIndex);
+                    Globals.tempSets[currentSetIndex].spriteIndexs.Add(textureIndex);
                 }
                 command = "none";
             }
@@ -109,14 +98,14 @@ namespace DynamicSsTexturePacker
 
                 if (Keys.Enter.IsKeyDown())
                 {
-                    sets[currentSetIndex].name = setName;
+                    Globals.tempSets[currentSetIndex].nameOfAnimation = setName;
                     command = "none";
                 }
                 if (Keys.Back.IsKeyDown())
                 {
-                    Set n = sets[currentSetIndex];
+                    SpriteSheet.Set n = Globals.tempSets[currentSetIndex];
                     setName = "";
-                    sets[currentSetIndex].name = setName;
+                    Globals.tempSets[currentSetIndex].nameOfAnimation = setName;
                 }
             }
 
@@ -129,7 +118,7 @@ namespace DynamicSsTexturePacker
                     float tempResult;
                     if(float.TryParse(setTimeString, out tempResult))
                     {
-                        sets[currentSetIndex].time = tempResult;
+                        Globals.tempSets[currentSetIndex].time = tempResult;
                         setTime = tempResult;
                         setTimeString = tempResult.ToString();
                     }
@@ -141,7 +130,7 @@ namespace DynamicSsTexturePacker
                 }
                 if (Keys.Back.IsKeyDown())
                 {
-                    Set n = sets[currentSetIndex];
+                    SpriteSheet.Set n = Globals.tempSets[currentSetIndex];
                     setTimeString = "";
                 }
             }
@@ -190,8 +179,8 @@ namespace DynamicSsTexturePacker
             h = Globals.device.Viewport.Height - y;
 
             // Draw the sheet if possible.
-            if (Globals.myGeneratedSpriteSheetInstance != null)
-                DrawSheetAndShowLabels(new Rectangle(300, y, Globals.myGeneratedSpriteSheetInstance.sheetWidth, Globals.myGeneratedSpriteSheetInstance.sheetHeight));
+            if (Globals.spriteSheetInstance != null)
+                DrawSheetAndShowLabels(new Rectangle(300, y, Globals.spriteSheetInstance.sheetWidth, Globals.spriteSheetInstance.sheetHeight));
 
 
             y = lh * 6;
@@ -228,9 +217,9 @@ namespace DynamicSsTexturePacker
                 commandIndex = index;
             }
 
-            if (sets.Count > 0)
+            if (Globals.tempSets.Count > 0)
             {
-                var set = sets[currentSetIndex];
+                var set = Globals.tempSets[currentSetIndex];
                 r = new Rectangle(buttonLength * 1 + 10, y, buttonLength, h);
                 index = DrawVisualClickListDisplay(r.Location.ToVector2(), 200, 50, 5, ref visualSelectedSetStartIndex, set);
                 if (index >= 0)
@@ -264,14 +253,14 @@ namespace DynamicSsTexturePacker
         public void DrawSheetAndShowLabels(Rectangle r)
         {
             // Draw the resulting spritesheet.
-            Globals.spriteBatch.Draw(Globals.myGeneratedSpriteSheetInstance.textureSheet, r, Color.White);
+            Globals.spriteBatch.Draw(Globals.spriteSheetInstance.textureSheet, r, Color.White);
             Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.Red);
 
             // Draw the names of the sprites in the sheet at their locations allow color change over sprites.
-            for (int i = 0; i < Globals.myGeneratedSpriteSheetInstance.sprites.Count; i++)
+            for (int i = 0; i < Globals.spriteSheetInstance.sprites.Count; i++)
             {
-                var spriteName = Globals.myGeneratedSpriteSheetInstance.sprites[i].nameOfSprite;
-                var nameoffset = Globals.myGeneratedSpriteSheetInstance.sprites[i].sourceRectangle;
+                var spriteName = Globals.spriteSheetInstance.sprites[i].nameOfSprite;
+                var nameoffset = Globals.spriteSheetInstance.sprites[i].sourceRectangle;
                 nameoffset.Location = nameoffset.Location + r.Location;
                 var color = Color.White;
                 if (nameoffset.Contains(MouseHelper.Pos))
@@ -384,9 +373,9 @@ namespace DynamicSsTexturePacker
         /// <summary>
         /// While were drawing them we check for clicks waste not want not. Though this whole thing is realatively not performant as it doesn't need to be.
         /// </summary>
-        public int DrawVisualClickListDisplay(Vector2 position, int visualListItemBoxWidth, int visualItemHeight, int visualListItemsAllowed, ref int startIndex, Set set)
+        public int DrawVisualClickListDisplay(Vector2 position, int visualListItemBoxWidth, int visualItemHeight, int visualListItemsAllowed, ref int startIndex, SpriteSheet.Set set)
         {
-            List<int> items = set.items;
+            List<int> items = set.spriteIndexs;
             int downSpacing = visualItemHeight;
             Globals.device.RasterizerState = Globals.rs_scissors_on;
             Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * downSpacing));

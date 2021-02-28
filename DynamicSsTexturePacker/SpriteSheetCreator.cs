@@ -15,6 +15,11 @@ namespace DynamicSsTexturePacker
 
         public void MakeSpriteSheet(GraphicsDevice graphics, string sheetName, int w, int h, List<Texture2D> textures, out SpriteSheet spriteSheet, bool saveToFile, string savepath)
         {
+            MakeSpriteSheet(graphics, sheetName, w, h, textures, null, out spriteSheet, saveToFile, savepath);
+        }
+
+        public void MakeSpriteSheet(GraphicsDevice graphics, string sheetName, int w, int h, List<Texture2D> textures, List<SpriteSheet.Set> sets, out SpriteSheet spriteSheet, bool saveToFile, string savepath)
+        {
             bool saveColorArrayInsteadOfTexture = false;
             this.graphics = graphics;
             Color[] ssColorArray = new Color[0];
@@ -26,7 +31,11 @@ namespace DynamicSsTexturePacker
             Console.WriteLine(" RequisiteSize " + requisiteSize);
             //spriteSheet.sprites = splist;
             if (amountAdded == len)
+            {
                 CreateSpriteSheetFromSprites(sheetName, w, h, ref spriteSheet, out ssColorArray);
+                if (sets != null)
+                    spriteSheet.sets = sets;
+            }
             else
             {
                 spriteSheet = null;
@@ -57,7 +66,18 @@ namespace DynamicSsTexturePacker
                     output.Write(ss.sprites[i].sourceRectangle.Y);
                     output.Write(ss.sprites[i].sourceRectangle.Width);
                     output.Write(ss.sprites[i].sourceRectangle.Height);
-                    // skip texture we only write one and it is already written.
+                }
+                // write out animation set information.
+                output.Write(ss.sets.Count);
+                for (int i = 0; i < ss.sets.Count; i++)
+                {
+                    output.Write(ss.sets[i].nameOfAnimation);
+                    output.Write(ss.sets[i].time);
+                    output.Write(ss.sets[i].spriteIndexs.Count);
+                    for (int j = 0; j < ss.sets[i].spriteIndexs.Count; j++)
+                    {
+                        output.Write(ss.sets[i].spriteIndexs[j]);
+                    }
                 }
                 if (saveColorArrayInsteadOfTexture)
                 {
@@ -97,6 +117,23 @@ namespace DynamicSsTexturePacker
                     ss.sprites[i].sourceRectangle = new Rectangle(input.ReadInt32(), input.ReadInt32(), input.ReadInt32(), input.ReadInt32());
                     // skip texture we only write one and it is already written.
                 }
+
+                // read in animation sets info.
+                var setlen = input.ReadInt32();
+                ss.sets = new List<SpriteSheet.Set>();
+                for (int i = 0; i < setlen; i++)
+                {
+                    SpriteSheet.Set n = new SpriteSheet.Set();
+                    n.nameOfAnimation = input.ReadString();
+                    n.time = input.ReadSingle();
+                    var indiceLen = input.ReadInt32();
+                    for (int j = 0; j < indiceLen; j++)
+                    {
+                        n.spriteIndexs.Add(input.ReadInt32());
+                    }
+                }
+
+                // texture array info.
                 Color[] cols = new Color[len];
                 if (loadColorArrayInsteadOfTexture)
                 {

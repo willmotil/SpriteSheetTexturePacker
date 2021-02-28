@@ -53,9 +53,12 @@ namespace DynamicSsTexturePacker
         public static SpriteFont font;
         // Does the conversion.
         public static SpriteSheetCreator ssCreator;
+
         // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
-        public static SpriteSheet myGeneratedSpriteSheetInstance;
+        public static SpriteSheet spriteSheetInstance;
+
         public static List<Texture2D> textures = new List<Texture2D>();
+        public static List<SpriteSheet.Set> tempSets = new List<SpriteSheet.Set>();
         public static string CurrentDirectory = Environment.CurrentDirectory; //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string saveDirectory = "";
         public static string savePath = "";
@@ -73,8 +76,8 @@ namespace DynamicSsTexturePacker
         public static void CreateAndSave(bool openDirectory)
         {
             ssCreator = new SpriteSheetCreator();
-            myGeneratedSpriteSheetInstance = new SpriteSheet();
-            ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 2048, 2048, Globals.textures, out myGeneratedSpriteSheetInstance, true, Globals.savePath);
+            spriteSheetInstance = new SpriteSheet();
+            ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 2048, 2048, Globals.textures, tempSets , out spriteSheetInstance, true, Globals.savePath);
             if (openDirectory)
                 Process.Start(Path.GetDirectoryName(Globals.savePath));
         }
