@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj": {}
+    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj": {}
   },
   "projects": {
-    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj": {
+    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj",
+        "projectUniqueName": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj",
         "projectName": "SpriteSheetAnimationPipelineReader",
-        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj",
-        "packagesPath": "C:\\Users\\will\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\obj\\",
+        "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\will\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +29,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +41,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "MonoGame.Framework.WindowsDX": {
               "target": "Package",
@@ -64,24 +66,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj": {
+    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj",
+        "projectUniqueName": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj",
         "projectName": "SpriteSheetAnimationPipeline",
-        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj",
-        "packagesPath": "C:\\Users\\will\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\obj\\",
+        "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\SpriteSheetAnimationPipeline.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipeline\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\will\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,9 +95,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj": {
-                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj"
+              "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj": {
+                "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetAnimationPipelineReader\\SpriteSheetAnimationPipelineReader.csproj"
               }
             }
           }
@@ -108,6 +111,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "MonoGame.Framework.Content.Pipeline": {
               "target": "Package",
@@ -132,7 +136,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

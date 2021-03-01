@@ -24,3 +24,16 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineC
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.csproj.CopyComplete
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.dll
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\SpriteSheetXnbPipelineCreator.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\SpriteSheetXnbPipelineCreator.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\MonoGame.Framework.Content.Pipeline.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\MonoGame.Framework.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\SpriteSheetXnbReader.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\SpriteSheetXnbReader.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\MonoGame.Framework.xml
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\bin\Debug\MonoGame.Framework.Content.Pipeline.xml
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.csprojAssemblyReference.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.csproj.CoreCompileInputs.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.csproj.CopyComplete
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbPipelineCreator\obj\Debug\SpriteSheetXnbPipelineCreator.pdb

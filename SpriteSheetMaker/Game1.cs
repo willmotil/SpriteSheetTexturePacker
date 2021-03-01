@@ -5,13 +5,10 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-//using SpriteSheetXnbReader;
-
 using SpriteSheetAnimationPipelineReader;
 
-// ToDo rework the sprite sheet class and the content pipely that uses it to accomidate sets in the sheet.
 
+// ToDo rework the sprite sheet class and the content pipely that uses it to accomidate sets in the sheet.
 
 // References for additional extras to make this pipelinable...
 // Tom Spillman and Andy Dunn
@@ -52,7 +49,6 @@ using SpriteSheetAnimationPipelineReader;
 
 namespace SpriteSheetMaker
 {
-
     public static class Globals
     {
         public static string mode = "SelectImages";
@@ -71,7 +67,7 @@ namespace SpriteSheetMaker
         public static string CurrentDirectory = Environment.CurrentDirectory; //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string saveDirectory = "";
         public static string savePath = "";
-        public static string saveFileName = "NewSpriteSheet";
+        public static string saveFileName = "NewAnimSpriteSheet";
 
         public static RasterizerState rs_scissors_on = new RasterizerState() { ScissorTestEnable = true };
         public static RasterizerState rs_scissors_off = new RasterizerState() { ScissorTestEnable = false };
@@ -80,25 +76,32 @@ namespace SpriteSheetMaker
         {
             Globals.saveDirectory = directoryPath;
             Globals.savePath = Path.Combine(Globals.saveDirectory, Globals.saveFileName);
-            Globals.savePath = Globals.savePath + ".spr";
+            Globals.savePath = Globals.savePath + ".ssa";
         }
+
         public static void CreateAndSave(bool openDirectory)
         {
             ssCreator = new AnimatedSpriteSheetCreator();
             spriteSheetInstance = new AnimatedSpriteSheet();
+            if (Directory.Exists(Globals.saveDirectory) == false)
+                Directory.CreateDirectory(Globals.saveDirectory);
             ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 2048, 2048, Globals.textures, tempSets , out spriteSheetInstance, true, Globals.savePath);
             if (openDirectory)
                 Process.Start(Path.GetDirectoryName(Globals.savePath));
         }
+
         public static void OpenDirectory(string path)
         {
-            Process.Start(Path.GetDirectoryName(path));
+            //Process.Start(path);
+            if (File.Exists(path))
+            {
+                Process.Start("explorer.exe", "/select, " + path);
+            }
         }
     }
 
     public class Game1 : Game
     {
-
         ModeSelectSprites modeSelectSprites = new ModeSelectSprites();
         ModeSelectSets modeSelectSets = new ModeSelectSets();
 
@@ -110,11 +113,8 @@ namespace SpriteSheetMaker
             Content.RootDirectory = "Content";
             Window.AllowUserResizing = true;
             this.IsMouseVisible = true;
-
             Window.TextInput += modeSelectSets.TakeText;
         }
-
-
 
         protected override void Initialize(){   base.Initialize();}
 
@@ -125,12 +125,13 @@ namespace SpriteSheetMaker
             Globals.device = Globals.graphics.GraphicsDevice;
             MgDrawExt.Initialize(Globals.device, Globals.spriteBatch);
 
-            string cdir = Content.RootDirectory;
-            Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
-            ss = Content.Load<SpriteSheet>("spriteSheetTest01");
-            Content.RootDirectory = cdir;
+            //string cdir = Content.RootDirectory;
+            //Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
+            //ss = Content.Load<SpriteSheet>("spriteSheetTest01");
+            //Content.RootDirectory = cdir;
 
-            Globals.SetSaveDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            var savedir = Path.Combine(Environment.CurrentDirectory, "Output");
+            Globals.SetSaveDirectory(savedir);
 
             modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
         }
@@ -173,7 +174,6 @@ namespace SpriteSheetMaker
                     modeSelectSets.Draw(gameTime);
                     break;
             }
-
 
             base.Draw(gameTime);
         }

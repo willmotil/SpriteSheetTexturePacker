@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.spr</SourceFile>
+  <SourceTime>2021-03-01T00:38:06.1873989-05:00</SourceTime>
+  <DestFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/bin/DesktopGL/ExampleSpriteSheet/spriteSheetTest01.xnb</DestFile>
+  <DestTime>2021-03-01T01:34:47.443243-05:00</DestTime>
+  <Importer>SpriteSheetImporter</Importer>
+  <ImporterTime>2021-03-01T01:22:18.217914-05:00</ImporterTime>
+  <Processor>SpriteSheetProcessor</Processor>
+  <ProcessorTime>2021-03-01T01:22:18.217914-05:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

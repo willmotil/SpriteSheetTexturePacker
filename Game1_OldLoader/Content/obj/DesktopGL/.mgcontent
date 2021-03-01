@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.spr</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/MgFont.spritefont</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/MonoGameLogoSpliffedup.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

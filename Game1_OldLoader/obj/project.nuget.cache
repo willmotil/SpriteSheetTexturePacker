@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "oYIPcreE8T6XoKKafhvGwhtYk2Ytghcf/ioAfI5SiaR6I4ROk4qf6VWzBMfA9sVyAnxjBeDuzCxlWTam0kT8Pw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Owner\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+  ],
+  "logs": []
+}

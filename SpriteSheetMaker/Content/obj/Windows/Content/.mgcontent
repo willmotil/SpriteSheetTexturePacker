@@ -4,17 +4,13 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/spriteSheetTest01.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/spriteSheetTest01.spr</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/filterTestImage.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MgFont.spritefont</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MonoGameLogoSpliffedup.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/sphereImage.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/filterTestImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MgFont.spritefont</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MonoGameLogoSpliffedup.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/sphereImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

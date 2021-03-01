@@ -10,3 +10,15 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPip
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.dll
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.pdb
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.csproj.CopyComplete
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.deps.json
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.csprojAssemblyReference.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.AssemblyInfoInputs.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.AssemblyInfo.cs
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.csproj.CoreCompileInputs.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.csproj.CopyComplete
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipeline\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.pdb
