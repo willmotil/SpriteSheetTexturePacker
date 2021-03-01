@@ -33,7 +33,7 @@ namespace SpriteSheetXnbPipelineCreator
         public override SpriteSheetContent Import(string filename, ContentImporterContext context)
         {
             // Debug line that shows up in the Pipeline tool or your build output window.
-            context.Logger.LogMessage("Importing SpriteSheet file: {0}", filename);
+            context.Logger.LogMessage("Importing SpriteSheet .spr file: {0}", filename);
             SpriteSheetContent ssc = new SpriteSheetContent();
 
             using (BinaryReader input = new BinaryReader(File.OpenRead(filename)))
@@ -52,12 +52,15 @@ namespace SpriteSheetXnbPipelineCreator
 
                 TextureImporter texImporter = new TextureImporter();
 
-                var texfilename = ssc.name;
+                // this is a little messed up cause i tried to use the name so it could be seperate but id have to fiddle with the filepaths and it really doesn't make sense just leave it as one texture with the same name as the sheet for now.
+                //var texfilename = ssc.name;
                 //var fullFilePath = Path.Combine(Environment.CurrentDirectory, Path.GetDirectoryName(texfilename));
-                var fullFilePath = Path.ChangeExtension(texfilename,".png");
-                context.Logger.LogMessage("Importing SpriteSheet file: {0}", fullFilePath);
-                var textureContent = (Texture2DContent)texImporter.Import(fullFilePath, context);
-                textureContent.Name = Path.GetFileNameWithoutExtension(fullFilePath);
+                //var pngfilename = Path.ChangeExtension(texfilename,".png");
+
+                var pngfilename = Path.ChangeExtension(filename, ".png");
+                context.Logger.LogMessage("Importing SpriteSheet .png file: {0}", pngfilename);
+                var textureContent = (Texture2DContent)texImporter.Import(pngfilename, context);
+                textureContent.Name = Path.GetFileNameWithoutExtension(pngfilename);
 
                 ssc.textureSheet = textureContent;
 

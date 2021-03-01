@@ -1,0 +1,9 @@
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.AssemblyInfoInputs.cache
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.AssemblyInfo.cs
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.deps.json
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.dll
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.pdb
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.dll
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.pdb
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.csproj.CoreCompileInputs.cache
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetAnimationPipelineReader\obj\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.csprojAssemblyReference.cache
