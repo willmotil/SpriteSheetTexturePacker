@@ -6,3 +6,4 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineRead
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.csproj.CopyComplete
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.dll
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.pdb
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.csprojAssemblyReference.cache
