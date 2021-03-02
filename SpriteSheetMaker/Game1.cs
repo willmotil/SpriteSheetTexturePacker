@@ -105,7 +105,7 @@ namespace SpriteSheetMaker
         ModeSelectSprites modeSelectSprites = new ModeSelectSprites();
         ModeSelectSets modeSelectSets = new ModeSelectSets();
 
-        SpriteSheet ss;
+        //SpriteSheet ss;
 
         public Game1()
         {
@@ -127,7 +127,7 @@ namespace SpriteSheetMaker
 
             //string cdir = Content.RootDirectory;
             //Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
-            //ss = Content.Load<SpriteSheet>("spriteSheetTest01");
+            //SpriteSheet ss = Content.Load<SpriteSheet>("spriteSheetTest01");
             //Content.RootDirectory = cdir;
 
             var savedir = Path.Combine(Environment.CurrentDirectory, "Output");

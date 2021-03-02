@@ -92,7 +92,11 @@ namespace Game1_OldLoader
         }
         public static void OpenDirectory(string path)
         {
-            Process.Start(Path.GetDirectoryName(path));
+            //Process.Start(Path.GetDirectoryName(path));
+            if (File.Exists(path))
+            {
+                Process.Start("explorer.exe", "/select, " + path);
+            }
         }
     }
 

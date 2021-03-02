@@ -3,7 +3,6 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\De
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\MonoGameLogoSpliffedup.xnb
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\sphereImage.xnb
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\TestOutlineImage.xnb
-C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\ExampleSpriteSheet\spriteSheetTest01.xnb
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Game_SpriteSheetMaker.exe
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Game_SpriteSheetMaker.deps.json
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Game_SpriteSheetMaker.runtimeconfig.json
@@ -167,3 +166,4 @@ C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\ne
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\Game_SpriteSheetMaker.dll
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\Game_SpriteSheetMaker.pdb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\Game_SpriteSheetMaker.genruntimeconfig.cache
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\ExampleSpriteSheet\NewAnimSpriteSheet.xnb

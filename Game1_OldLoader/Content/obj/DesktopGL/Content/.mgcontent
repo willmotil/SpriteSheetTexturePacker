@@ -4,10 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.png</File>
-    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.spr</File>
-    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/MgFont.spritefont</File>
-    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/MonoGameLogoSpliffedup.png</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.png</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/ExampleSpriteSheet/spriteSheetTest01.spr</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/MgFont.spritefont</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/Game1_OldLoader/Content/MonoGameLogoSpliffedup.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

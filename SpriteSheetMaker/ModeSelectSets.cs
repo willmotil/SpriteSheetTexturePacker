@@ -13,7 +13,7 @@ namespace SpriteSheetMaker
     public class ModeSelectSets
     {
         string command = "none";
-        string command2 = "none";
+        //string command2 = "none";
         int commandIndex = 0;
 
         int visualSelectedImagesStartIndex = 0;

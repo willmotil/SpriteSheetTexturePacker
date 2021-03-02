@@ -33,7 +33,7 @@ namespace SpriteSheetMaker
         int visualListItemBoxWidth = 250;
 
         string command = "none";
-        string command2 = "none";
+        //string command2 = "none";
         int commandIndex = 0;
 
         public void Update(GameTime gameTime)

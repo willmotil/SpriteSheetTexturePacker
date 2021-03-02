@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj": {}
+    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj": {
+    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj",
+        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj",
         "projectName": "Game1_OldLoader",
-        "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\obj\\",
+        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\Game1_OldLoader.csproj",
+        "packagesPath": "C:\\Users\\will\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\Game1_OldLoader\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\will\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,13 +29,12 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
-                "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj"
+              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
+                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj"
               },
-              "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
-                "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
+              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
+                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
               }
             }
           }
@@ -48,7 +47,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
@@ -74,20 +72,20 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
+    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj",
+        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj",
         "projectName": "SpriteSheetXnbPipelineCreator",
-        "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj",
+        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj",
         "frameworks": {
           "net45": {
             "projectReferences": {
-              "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
-                "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
+              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
+                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
               }
             }
           }
@@ -97,11 +95,11 @@
         "net45": {}
       }
     },
-    "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
+    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj",
+        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj",
         "projectName": "SpriteSheetXnbReader",
-        "projectPath": "C:\\Users\\Owner\\GithubPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
+        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
       },
       "frameworks": {
         "net45": {}
