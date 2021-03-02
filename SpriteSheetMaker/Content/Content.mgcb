@@ -10,8 +10,8 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:..\..\SpriteSheetAnimationPipelineReader\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipelineReader.dll
-/reference:..\..\SpriteSheetAnimationPipeline\bin\Debug\netcoreapp3.1\SpriteSheetAnimationPipeline.dll
+/reference:..\..\SpriteSheetXnbReader\bin\Debug\SpriteSheetXnbReader.dll
+/reference:..\..\SpriteSheetXnbPipelineCreator\bin\Debug\SpriteSheetXnbPipelineCreator.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -26,6 +26,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ExampleSpriteSheet/NewAnimSpriteSheet.png
+
+#begin ExampleSpriteSheet/NewAnimSpriteSheet.ssa
+/importer:SpriteSheetAnimImporter
+/processor:SpriteSheetAnimProcessor
+/build:ExampleSpriteSheet/NewAnimSpriteSheet.ssa
 
 #begin filterTestImage.png
 /importer:TextureImporter

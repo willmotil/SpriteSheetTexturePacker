@@ -22,3 +22,4 @@ C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbReader\obj\Debu
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbReader\obj\Debug\SpriteSheetXnbReader.csproj.CopyComplete
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbReader\obj\Debug\SpriteSheetXnbReader.dll
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetXnbReader\obj\Debug\SpriteSheetXnbReader.pdb
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetXnbReader\obj\Debug\SpriteSheetXnbReader.csprojAssemblyReference.cache

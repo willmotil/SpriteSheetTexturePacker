@@ -5,7 +5,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SpriteSheetAnimationPipelineReader;
+using SpriteSheetXnbReader;
 
 
 // ToDo rework the sprite sheet class and the content pipely that uses it to accomidate sets in the sheet.
@@ -125,15 +125,41 @@ namespace SpriteSheetMaker
             Globals.device = Globals.graphics.GraphicsDevice;
             MgDrawExt.Initialize(Globals.device, Globals.spriteBatch);
 
-            //string cdir = Content.RootDirectory;
-            //Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
-            //SpriteSheet ss = Content.Load<SpriteSheet>("spriteSheetTest01");
-            //Content.RootDirectory = cdir;
+            TestLoad();
 
             var savedir = Path.Combine(Environment.CurrentDirectory, "Output");
             Globals.SetSaveDirectory(savedir);
 
             modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+        }
+
+        public void TestLoad()
+        {
+            string cdir = Content.RootDirectory;
+            Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
+            SpriteSheetAnim ss = Content.Load<SpriteSheetAnim>("NewAnimSpriteSheet");
+            Content.RootDirectory = cdir;
+            Console.WriteLine("\n F I L E");
+            Console.WriteLine(ss.name +" "+ ss.textureSheet.Name);
+            Console.WriteLine(ss.sheetWidth + " " + ss.sheetHeight);
+            Console.WriteLine("\n S P R I T E 'S");
+            int i = 0;
+            foreach (var sprite in ss.sprites)
+            {
+                Console.WriteLine($"[{i}]"+sprite.nameOfSprite + " " + sprite.sourceRectangle);
+                i++;
+            }
+            Console.WriteLine("\n S E T 'S");
+            foreach (var set in ss.sets)
+            {
+                Console.WriteLine(set.nameOfAnimation);
+                foreach (var index in set.spriteIndexs)
+                {
+                    Console.Write(index + " ");
+                }
+                Console.WriteLine("\n ");
+            }
+            Console.WriteLine("\n ");
         }
 
         protected override void UnloadContent()

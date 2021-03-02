@@ -49,10 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpriteSheetContent.cs" />
-    <Compile Include="SpriteSheetDataWriter.cs" />
-    <Compile Include="SpriteSheetImporter.cs" />
-    <Compile Include="SpriteSheetProcessor.cs" />
+    <Compile Include="SpriteSheetAnimContent.cs" />
+    <Compile Include="SpriteSheetAnimDataWriter.cs" />
+    <Compile Include="SpriteSheetAnimImporter.cs" />
+    <Compile Include="SpriteSheetAnimProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
