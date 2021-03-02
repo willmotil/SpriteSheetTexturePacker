@@ -3,11 +3,11 @@
   <SourceFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.ssa</SourceFile>
   <SourceTime>2021-03-01T20:52:08.7891542-05:00</SourceTime>
   <DestFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/bin/Windows/Content/ExampleSpriteSheet/NewAnimSpriteSheet.xnb</DestFile>
-  <DestTime>2021-03-01T21:18:34.3769295-05:00</DestTime>
+  <DestTime>2021-03-02T03:00:18.0013014-05:00</DestTime>
   <Importer>SpriteSheetAnimImporter</Importer>
-  <ImporterTime>2021-03-01T21:18:32.9194411-05:00</ImporterTime>
+  <ImporterTime>2021-03-02T03:00:06.3711145-05:00</ImporterTime>
   <Processor>SpriteSheetAnimProcessor</Processor>
-  <ProcessorTime>2021-03-01T21:18:32.9194411-05:00</ProcessorTime>
+  <ProcessorTime>2021-03-02T03:00:06.3711145-05:00</ProcessorTime>
   <Dependencies />
   <BuildAsset />
   <BuildOutput />

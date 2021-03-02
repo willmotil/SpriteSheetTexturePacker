@@ -12,9 +12,8 @@ namespace SpriteSheetXnbPipelineCreator
     /// ContentImporter(".spr",  This tells the Pipeline tool to use this content importer for files with the .spr extension which ill be generating. 
     /// It also tells the Pipeline tool to use SpriteSheetProcessor as the default processor.
     ///
-
     [ContentImporter(".ssa", DefaultProcessor = "SpriteSheetAnimProcessor", DisplayName = "SpriteSheetAnimImporter")]
-    public class SpriteSheetAnimImporter : ContentImporter<SpriteSheetAnimContent>
+    public class SpriteSheetImporter : ContentImporter<SpriteSheetAnimContent>
     {
         public override SpriteSheetAnimContent Import(string filename, ContentImporterContext context)
         {
