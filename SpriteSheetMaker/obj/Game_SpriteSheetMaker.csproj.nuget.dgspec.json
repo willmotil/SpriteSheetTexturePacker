@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
-                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj"
+              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj": {
+                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj"
               },
-              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
-                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
+              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj": {
+                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj"
               }
             }
           }
@@ -79,30 +79,30 @@
         }
       }
     },
-    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
+    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj",
-        "projectName": "SpriteSheetXnbPipelineCreator",
-        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj",
-        "frameworks": {
-          "net45": {
-            "projectReferences": {
-              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
-                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
-              }
-            }
-          }
-        }
+        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj",
+        "projectName": "SpriteSheetPipelineReader",
+        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj"
       },
       "frameworks": {
         "net45": {}
       }
     },
-    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
+    "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj",
-        "projectName": "SpriteSheetXnbReader",
-        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
+        "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj",
+        "projectName": "SpriteSheetPipeline",
+        "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj",
+        "frameworks": {
+          "net45": {
+            "projectReferences": {
+              "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj": {
+                "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj"
+              }
+            }
+          }
+        }
       },
       "frameworks": {
         "net45": {}

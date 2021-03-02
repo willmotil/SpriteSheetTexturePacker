@@ -10,8 +10,8 @@
         "dependencies": {
           "MonoGame.Content.Builder.Task": "3.8.0.1641",
           "MonoGame.Framework.WindowsDX": "3.8.0.1641",
-          "SpriteSheetXnbPipelineCreator": "1.0.0",
-          "SpriteSheetXnbReader": "1.0.0"
+          "SpriteSheetPipeline": "1.0.0",
+          "SpriteSheetPipelineReader": "1.0.0"
         },
         "runtime": {
           "Game_SpriteSheetMaker.dll": {}
@@ -1483,17 +1483,17 @@
           "System.Xml.XPath": "4.0.1"
         }
       },
-      "SpriteSheetXnbPipelineCreator/1.0.0": {
+      "SpriteSheetPipeline/1.0.0": {
         "dependencies": {
-          "SpriteSheetXnbReader": "1.0.0"
+          "SpriteSheetPipelineReader": "1.0.0"
         },
         "runtime": {
-          "SpriteSheetXnbPipelineCreator.dll": {}
+          "SpriteSheetPipeline.dll": {}
         }
       },
-      "SpriteSheetXnbReader/1.0.0": {
+      "SpriteSheetPipelineReader/1.0.0": {
         "runtime": {
-          "SpriteSheetXnbReader.dll": {}
+          "SpriteSheetPipelineReader.dll": {}
         }
       },
       "MonoGame.Framework.Content.Pipeline/3.7.1.189": {
@@ -2359,12 +2359,12 @@
       "path": "system.xml.xpath.xdocument/4.0.1",
       "hashPath": "system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
     },
-    "SpriteSheetXnbPipelineCreator/1.0.0": {
+    "SpriteSheetPipeline/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "SpriteSheetXnbReader/1.0.0": {
+    "SpriteSheetPipelineReader/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

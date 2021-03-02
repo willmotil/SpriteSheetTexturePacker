@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpriteSheetCreator", "SpriteSheetMaker\SpriteSheetCreator.csproj", "{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteSheetPipeline", "SpriteSheetPipeline\SpriteSheetPipeline.csproj", "{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteSheetPipelineReader", "SpriteSheetPipelineReader\SpriteSheetPipelineReader.csproj", "{4A492B71-6723-414F-8C12-B5879CD37D4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Debug|x86.Build.0 = Debug|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Release|x86.ActiveCfg = Release|Any CPU
+		{DDE74ABC-097F-41F5-8101-F94DBB0DD5CA}.Release|x86.Build.0 = Release|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Debug|x86.Build.0 = Debug|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Release|x86.ActiveCfg = Release|Any CPU
+		{DF1AFE32-55C1-4C4C-A436-C36E59F7F2C2}.Release|x86.Build.0 = Release|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Debug|x86.Build.0 = Debug|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A492B71-6723-414F-8C12-B5879CD37D4D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64C17390-ED36-4006-A133-E17BF08DD430}
+	EndGlobalSection
+EndGlobal

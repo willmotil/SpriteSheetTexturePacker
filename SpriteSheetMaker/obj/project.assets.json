@@ -2262,25 +2262,25 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "SpriteSheetXnbPipelineCreator/1.0.0": {
+      "SpriteSheetPipeline/1.0.0": {
         "type": "project",
         "dependencies": {
-          "SpriteSheetXnbReader": "1.0.0"
+          "SpriteSheetPipelineReader": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/SpriteSheetXnbPipelineCreator.dll": {}
+          "bin/placeholder/SpriteSheetPipeline.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SpriteSheetXnbPipelineCreator.dll": {}
+          "bin/placeholder/SpriteSheetPipeline.dll": {}
         }
       },
-      "SpriteSheetXnbReader/1.0.0": {
+      "SpriteSheetPipelineReader/1.0.0": {
         "type": "project",
         "compile": {
-          "bin/placeholder/SpriteSheetXnbReader.dll": {}
+          "bin/placeholder/SpriteSheetPipelineReader.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SpriteSheetXnbReader.dll": {}
+          "bin/placeholder/SpriteSheetPipelineReader.dll": {}
         }
       }
     }
@@ -7317,23 +7317,23 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "SpriteSheetXnbPipelineCreator/1.0.0": {
+    "SpriteSheetPipeline/1.0.0": {
       "type": "project",
-      "path": "../SpriteSheetXnbPipelineCreator/SpriteSheetXnbPipelineCreator.csproj",
-      "msbuildProject": "../SpriteSheetXnbPipelineCreator/SpriteSheetXnbPipelineCreator.csproj"
+      "path": "../SpriteSheetPipeline/SpriteSheetPipeline.csproj",
+      "msbuildProject": "../SpriteSheetPipeline/SpriteSheetPipeline.csproj"
     },
-    "SpriteSheetXnbReader/1.0.0": {
+    "SpriteSheetPipelineReader/1.0.0": {
       "type": "project",
-      "path": "../SpriteSheetXnbReader/SpriteSheetXnbReader.csproj",
-      "msbuildProject": "../SpriteSheetXnbReader/SpriteSheetXnbReader.csproj"
+      "path": "../SpriteSheetPipelineReader/SpriteSheetPipelineReader.csproj",
+      "msbuildProject": "../SpriteSheetPipelineReader/SpriteSheetPipelineReader.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "MonoGame.Content.Builder.Task >= 3.8.0.1641",
       "MonoGame.Framework.WindowsDX >= 3.8.0.1641",
-      "SpriteSheetXnbPipelineCreator >= 1.0.0",
-      "SpriteSheetXnbReader >= 1.0.0"
+      "SpriteSheetPipeline >= 1.0.0",
+      "SpriteSheetPipelineReader >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -7343,9 +7343,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\Game_SpriteSheetMaker.csproj",
-      "projectName": "Game_SpriteSheetMaker",
-      "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\Game_SpriteSheetMaker.csproj",
+      "projectUniqueName": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\SpriteSheetCreator.csproj",
+      "projectName": "SpriteSheetCreator",
+      "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\SpriteSheetCreator.csproj",
       "packagesPath": "C:\\Users\\will\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\obj\\",
       "projectStyle": "PackageReference",
@@ -7366,11 +7366,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj": {
-              "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbPipelineCreator\\SpriteSheetXnbPipelineCreator.csproj"
+            "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj": {
+              "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipelineReader\\SpriteSheetPipelineReader.csproj"
             },
-            "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj": {
-              "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetXnbReader\\SpriteSheetXnbReader.csproj"
+            "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj": {
+              "projectPath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetPipeline\\SpriteSheetPipeline.csproj"
             }
           }
         }

@@ -6,11 +6,11 @@
   <SourceFiles>
     <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.png</File>
     <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.ssa</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/filterTestImage.png</File>
     <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MgFont.spritefont</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MonoGameLogoSpliffedup.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/sphereImage.png</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestFilterImage.png</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestMgLogo.png</File>
     <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</File>
+    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestSphereImage.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

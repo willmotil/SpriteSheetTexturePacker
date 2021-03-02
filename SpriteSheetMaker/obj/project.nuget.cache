@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kdSI4tXiepaw9JaZH/k9kkASvGpnuCCJ/RJD17PCVN+ZysnsOT+gnP2JXJC4YXxec0cFq9YK+/6+hGLw9nTUUw==",
+  "dgSpecHash": "XVQVwr1FcNATTYMg4MNk4YtJY9loSGcZd3MEa0Gs4rBlPFVQLt11iK2Y3goHRxuqRmz92a6YKgr12hQbuxKPXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\Game_SpriteSheetMaker.csproj",
+  "projectFilePath": "C:\\Users\\will\\MainFiles\\GitPrjs\\SpriteSheetTexturePacker\\SpriteSheetMaker\\SpriteSheetCreator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\will\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\will\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
