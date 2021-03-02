@@ -11,3 +11,4 @@ In the .mgcb file you must include a reference to the pipeline reader.dll to rea
   
 This project also used the monogame frame work and content nuget packages.
 
+<img src="https://github.com/willmotil/SpriteSheetTexturePacker/blob/main/ConsoleOutput.png"  height="400" width="600"> 
