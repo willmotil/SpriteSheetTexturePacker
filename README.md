@@ -7,8 +7,7 @@ The included pipeline will generate a xnb and the associated reader can read the
 
 In a new game1 project one can then load it using the familiar. 
 var spritesheet = Content.Load<SpriteSheet>("MySpriteSheet");
-
 In the .mgcb file you must include a reference to the pipeline reader.dll to read in the spritesheet.
-
+  
 This project also used the monogame frame work and content nuget packages.
 
