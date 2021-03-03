@@ -11,3 +11,16 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.csproj.CopyComplete
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.dll
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\SpriteSheetPipeline.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\SpriteSheetPipeline.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\MonoGame.Framework.Content.Pipeline.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\MonoGame.Framework.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\SpriteSheetPipelineReader.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\SpriteSheetPipelineReader.pdb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\MonoGame.Framework.xml
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\bin\Debug\MonoGame.Framework.Content.Pipeline.xml
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.csprojAssemblyReference.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.csproj.CoreCompileInputs.cache
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.csproj.CopyComplete
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.dll
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipeline\obj\Debug\SpriteSheetPipeline.pdb

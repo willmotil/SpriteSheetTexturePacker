@@ -73,8 +73,8 @@ namespace SpriteSheetCreator
         string setName = "";
         int currentSetIndex = -1;
 
-        string setTimeString = ".5f";
-        float setTime = .5f;
+        string setTimeString = ".25f";
+        float setTime = .25f;
 
         public void TakeText(Object sender, TextInputEventArgs e)
         {
@@ -142,75 +142,91 @@ namespace SpriteSheetCreator
         {
             Rectangle r = new Rectangle();
 
-            int lh = Globals.font.LineSpacing;
-            int y = lh * 0;
-            int h = lh * 1;
+            int lsp = Globals.font.LineSpacing;
+            int buttonLength = 200;
+            int x = buttonLength * 0 + 10;
+            int y = lsp * 0;
+            int h = lsp * 1;
             int w = Globals.device.Viewport.Width - 10;
 
             Globals.spriteBatch.Begin();
 
+            Globals.spriteBatch.DrawString(Globals.font, "Set groups of images to be animation sets.", new Vector2(10, y), Color.White);
 
-            int buttonLength = 200;
+            x = buttonLength * 0 + 10;
+            y = lsp * 2;
 
-            Globals.spriteBatch.DrawString(Globals.font, "Set groups of images to be animation sets.", new Vector2(10, 0), Color.White);
-
-            // go back to sprite select.
-            r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            // Go back to sprite select.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
             DrawCheckClickSetCommand(r, "Go back to select images", "SelectImages", Color.White, Color.Blue);
 
-            h = lh * 2;
-
-            // draw the create sheet button.
-            r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Create sprite sheet", "CreateSheet", Color.White, Color.Blue);
-
-            h = lh * 2;
-
-            // name file.
-            r = new Rectangle(new Point(10, Globals.font.LineSpacing + h), new Point(buttonLength, Globals.font.LineSpacing));
-            DrawTextboxClickSetCommand(r,"Name spritesheet" , newSaveName, "NameFile", Color.Black, Color.Blue);
-
-            h = lh * 6;
-
-            // open the current save path.
-            r = new Rectangle(new Point(buttonLength * 0 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Open save path", "OpenSavePath", Color.White, Color.Blue);
-
-            y = lh * 12;
-            h = Globals.device.Viewport.Height - y;
+            y = lsp * 14;
 
             // Draw the sheet if possible.
             if (Globals.spriteSheetInstance != null)
                 DrawSheetAndShowLabels(new Rectangle(300, y, Globals.spriteSheetInstance.sheetWidth, Globals.spriteSheetInstance.sheetHeight));
 
+            // Animation sets.
+            x = buttonLength * 0 + 10;
+            y = lsp * 4;
 
-            y = lh * 6;
-            h = lh * 2;
-            // new set.
-            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Add new set", "AddNewSet", Color.White, Color.Blue);
+            // New set.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Add new animation set", "AddNewSet", Color.White, Color.Blue);
 
-            h = lh * 3;
+            y = lsp * 5;
 
-            // name set.
-            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            // Name set.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
             DrawTextboxClickSetCommand(r, "Name set", setName, "NameSet", Color.White, Color.Blue);
 
-            h = lh * 5;
+            y = lsp * 7;
 
-            // set time.
-            r = new Rectangle(new Point(buttonLength * 1 + 10, h), new Point(buttonLength, Globals.font.LineSpacing));
+            // Set time.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
             DrawTextboxClickSetCommand(r, "Set time", setTimeString , "SetTime", Color.White, Color.Blue);
 
+
+            y = lsp * 9;
+
+            // calculate and display total duration.
+            if (Globals.tempSets.Count > 0)
+            {
+                var setTotalAnimationDuration = Globals.tempSets[currentSetIndex].time * Globals.tempSets[currentSetIndex].spriteIndexs.Count;
+                Globals.spriteBatch.DrawString(Globals.font, "Set's total duration time: " + setTotalAnimationDuration, new Vector2(10, y), Color.White);
+            }
+
+
+            // Sheet stuff.
+            x = buttonLength * 1 + 20;
+            y = lsp * 4;
+
+            // Draw the create sheet button.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Create sprite sheet", "CreateSheet", Color.White, Color.Blue);
+
+            y = lsp * 5;
+
+            // Name file.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawTextboxClickSetCommand(r, "Name spritesheet", newSaveName, "NameFile", Color.Black, Color.Blue);
+
+            y = lsp * 8;
+
+            // Open the current save path.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Open save path", "OpenSavePath", Color.White, Color.Blue);
 
             Globals.spriteBatch.End();
 
 
-            y = lh * 8;
-            h = lh * 5;
+            // Lists.
+            x = buttonLength * 0 + 10;
+            y = lsp * 12;
+            h = lsp * 5;
 
             // Draw the individual textures when clicked add them to a set that is selected.
-            r = new Rectangle(buttonLength * 0 + 10, y, buttonLength, h);
+            r = new Rectangle(x, y, buttonLength, h);
             int index = DrawVisualClickListDisplay(r.Location.ToVector2(), 200, 50, 5, ref visualSelectedImagesStartIndex, Globals.textures);
             if (index >= 0)
             {
@@ -218,10 +234,12 @@ namespace SpriteSheetCreator
                 commandIndex = index;
             }
 
+            x = buttonLength * 1 + 20;
+
             if (Globals.tempSets.Count > 0)
             {
                 var set = Globals.tempSets[currentSetIndex];
-                r = new Rectangle(buttonLength * 1 + 10, y, buttonLength, h);
+                r = new Rectangle(x, y, buttonLength, h);
                 index = DrawVisualClickListDisplay(r.Location.ToVector2(), 200, 50, 5, ref visualSelectedSetStartIndex, set);
                 if (index >= 0)
                 {

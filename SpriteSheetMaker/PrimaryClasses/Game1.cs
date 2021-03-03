@@ -60,13 +60,12 @@ namespace SpriteSheetCreator
         public static AnimatedSpriteSheetGenerator ssCreator;
 
         // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
-        //public static SpriteSheetAnimated spriteSheetInstance;
         public static SpriteSheet spriteSheetInstance;
 
         public static List<Texture2D> textures = new List<Texture2D>();
-        //public static List<SpriteSheetAnimated.Set> tempSets = new List<SpriteSheetAnimated.Set>();
         public static List<SpriteSheet.Set> tempSets = new List<SpriteSheet.Set>();
-        public static string CurrentDirectory = Environment.CurrentDirectory; //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static string CurrentDirectory = Environment.CurrentDirectory;
+        //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static string saveDirectory = "";
         public static string savePath = "";
         public static string saveFileName = "NewAnimSpriteSheet";
@@ -84,7 +83,6 @@ namespace SpriteSheetCreator
         public static void CreateAndSave(bool openDirectory)
         {
             ssCreator = new AnimatedSpriteSheetGenerator();
-            //spriteSheetInstance = new SpriteSheetAnimated();
             spriteSheetInstance = new SpriteSheet();
             if (Directory.Exists(Globals.saveDirectory) == false)
                 Directory.CreateDirectory(Globals.saveDirectory);
@@ -97,18 +95,15 @@ namespace SpriteSheetCreator
         {
             //Process.Start(path);
             if (File.Exists(path))
-            {
                 Process.Start("explorer.exe", "/select, " + path);
-            }
         }
     }
+
 
     public class Game1 : Game
     {
         GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();
         GameModeSelectSets modeSelectSets = new GameModeSelectSets();
-
-        //SpriteSheet ss;
 
         public Game1()
         {
@@ -119,7 +114,15 @@ namespace SpriteSheetCreator
             Window.TextInput += modeSelectSets.TakeText;
         }
 
-        protected override void Initialize(){   base.Initialize();}
+        protected override void Initialize()
+        {
+            Globals.graphics.PreferredBackBufferWidth = 800;
+            Globals.graphics.PreferredBackBufferHeight = 600;
+            Globals.graphics.ApplyChanges();
+            base.Initialize();   
+        }
+
+        protected override void UnloadContent() { }
 
         protected override void LoadContent()
         {
@@ -128,47 +131,12 @@ namespace SpriteSheetCreator
             Globals.device = Globals.graphics.GraphicsDevice;
             MgDrawExt.Initialize(Globals.device, Globals.spriteBatch);
 
-            TestLoad();
-
             var savedir = Path.Combine(Environment.CurrentDirectory, "Output");
             Globals.SetSaveDirectory(savedir);
 
             modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
-        }
 
-        public void TestLoad()
-        {
-            string cdir = Content.RootDirectory;
-            Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
-            SpriteSheet ss = Content.Load<SpriteSheet>("NewAnimSpriteSheet");
-            Content.RootDirectory = cdir;
-            Console.WriteLine("\n F I L E  \n");
-            Console.WriteLine(ss.name +" "+ ss.textureSheet.Name);
-            Console.WriteLine(ss.sheetWidth + " " + ss.sheetHeight);
-            Console.WriteLine("\n S P R I T E 'S  \n");
-            int i = 0;
-            foreach (var sprite in ss.sprites)
-            {
-                Console.WriteLine($"[{i}] \n"+sprite.nameOfSprite + "\n" + "Source rectangle: " + sprite.sourceRectangle);
-                i++;
-            }
-            Console.WriteLine("\n S E T 'S  \n");
-            foreach (var set in ss.sets)
-            {
-                Console.WriteLine(set.nameOfAnimation);
-                Console.WriteLine("sprite time: "+set.time);
-                foreach (var index in set.spriteIndexs)
-                {
-                    Console.Write(index + " ");
-                }
-                Console.WriteLine("\n ");
-            }
-            Console.WriteLine("\n ");
-        }
-
-        protected override void UnloadContent()
-        {
-
+            TestLoad();
         }
 
         protected override void Update(GameTime gameTime)
@@ -208,19 +176,37 @@ namespace SpriteSheetCreator
             base.Draw(gameTime);
         }
 
-        public Texture2D LoadTexture(string FileName)
+        public void TestLoad()
         {
-            return Content.Load<Texture2D>(FileName);
+            string cdir = Content.RootDirectory;
+            Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
+            SpriteSheet ss = Content.Load<SpriteSheet>("NewAnimSpriteSheet");
+            Content.RootDirectory = cdir;
+            Console.WriteLine("\n F I L E  \n");
+            Console.WriteLine(ss.name + " " + ss.textureSheet.Name);
+            Console.WriteLine(ss.sheetWidth + " " + ss.sheetHeight);
+            Console.WriteLine("\n S P R I T E 'S  \n");
+            int i = 0;
+            foreach (var sprite in ss.sprites)
+            {
+                Console.WriteLine($"[{i}] \n" + sprite.nameOfSprite + "\n" + "Source rectangle: " + sprite.sourceRectangle);
+                i++;
+            }
+            Console.WriteLine("\n S E T 'S  \n");
+            foreach (var set in ss.sets)
+            {
+                Console.WriteLine(set.nameOfAnimation);
+                Console.WriteLine("sprite time: " + set.time);
+                foreach (var index in set.spriteIndexs)
+                {
+                    Console.Write(index + " ");
+                }
+                Console.WriteLine("\n ");
+            }
+            Console.WriteLine("\n ");
         }
 
-        public void ExampleLoad()
-        {
-            // Well get the textures.
-            Globals.textures.Add(LoadTexture("MonoGameLogoSpliffedup"));
-            Globals.textures.Add(LoadTexture("TestOutlineImage"));
-            Globals.textures.Add(LoadTexture("filterTestImage"));
-            Globals.textures.Add(LoadTexture("sphereImage"));
-        }
+        public Texture2D LoadTexture(string FileName) { return Content.Load<Texture2D>(FileName); }
 
     }
 }
