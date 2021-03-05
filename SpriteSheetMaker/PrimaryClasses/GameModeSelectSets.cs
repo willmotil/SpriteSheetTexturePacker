@@ -20,6 +20,8 @@ namespace SpriteSheetCreator
         int visualSelectedImagesStartIndex = 0;
         int visualSelectedSetStartIndex = 0;
 
+        float animationTime = 0f;
+
         public void Update(GameTime gameTime)
         {
 
@@ -40,6 +42,8 @@ namespace SpriteSheetCreator
                 Globals.OpenDirectory(Globals.savePath);
                 command = "none";
             }
+
+
 
             if (command == "AddNewSet")
             {
@@ -64,6 +68,35 @@ namespace SpriteSheetCreator
 
             if (command == "RemoveFromCurrentSet")
             {
+                if (currentSetIndex >= 0)
+                {
+                    Globals.tempSets[currentSetIndex].spriteIndexs.RemoveAt(commandIndex);
+                }
+                command = "none";
+            }
+
+            if (command == "LastSet")
+            {
+                if (currentSetIndex > 0)
+                {
+                    currentSetIndex--;
+                    setName = Globals.tempSets[currentSetIndex].nameOfAnimation;
+                    setTime = Globals.tempSets[currentSetIndex].time;
+                    setTimeString = setTime.ToString();
+                }
+                command = "none";
+            }
+
+            if (command == "NextSet")
+            {
+                int len = Globals.tempSets.Count;
+                if (currentSetIndex < len-1 && len > 0)
+                {
+                    currentSetIndex++;
+                    setName = Globals.tempSets[currentSetIndex].nameOfAnimation;
+                    setTime = Globals.tempSets[currentSetIndex].time;
+                    setTimeString = setTime.ToString();
+                }
                 command = "none";
             }
 
@@ -141,6 +174,7 @@ namespace SpriteSheetCreator
         public void Draw(GameTime gameTime)
         {
             Rectangle r = new Rectangle();
+            animationTime += (float)(gameTime.ElapsedGameTime.TotalSeconds);
 
             int lsp = Globals.font.LineSpacing;
             int buttonLength = 200;
@@ -165,6 +199,9 @@ namespace SpriteSheetCreator
             // Draw the sheet if possible.
             if (Globals.spriteSheetInstance != null)
                 DrawSheetAndShowLabels(new Rectangle(300, y, Globals.spriteSheetInstance.sheetWidth, Globals.spriteSheetInstance.sheetHeight));
+
+
+
 
             // Animation sets.
             x = buttonLength * 0 + 10;
@@ -196,6 +233,27 @@ namespace SpriteSheetCreator
                 Globals.spriteBatch.DrawString(Globals.font, "Set's total duration time: " + setTotalAnimationDuration, new Vector2(10, y), Color.White);
             }
 
+            x = buttonLength * 0 + 10;
+            y = lsp * 11;
+
+            // Last Set.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Last Set", "LastSet", Color.White, Color.Blue);
+
+            y = lsp * 12;
+
+            // Next Set.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Next Set", "NextSet", Color.White, Color.Blue);
+
+            x = buttonLength * 3 + 30;
+            y = lsp * 2;
+
+            // draw animation if it exists.
+            r = new Rectangle(x, y, buttonLength, buttonLength);
+            DrawSpriteAnimation(r);
+
+
 
             // Sheet stuff.
             x = buttonLength * 1 + 20;
@@ -222,7 +280,7 @@ namespace SpriteSheetCreator
 
             // Lists.
             x = buttonLength * 0 + 10;
-            y = lsp * 12;
+            y = lsp * 14;
             h = lsp * 5;
 
             // Draw the individual textures when clicked add them to a set that is selected.
@@ -438,6 +496,26 @@ namespace SpriteSheetCreator
 
             Globals.spriteBatch.End();
             return clickedResult;
+        }
+
+        public void DrawSpriteAnimation(Rectangle r)
+        {
+            int len = Globals.tempSets.Count;
+            if (currentSetIndex > -1 && currentSetIndex < len && len > 0)
+            {
+                int count = Globals.tempSets[currentSetIndex].spriteIndexs.Count;
+                setTime = Globals.tempSets[currentSetIndex].time;
+                float totalTime = count * setTime;
+                if (animationTime >= totalTime)
+                    animationTime = 0; // animationTime - totalTime;
+                int initialIndex = (int)(animationTime / setTime);
+
+                if (count > 0)
+                {
+                    var textureIndex = Globals.tempSets[currentSetIndex].spriteIndexs[initialIndex];
+                    Globals.spriteBatch.Draw(Globals.textures[textureIndex], r, Color.White);
+                }
+            }
         }
 
     }

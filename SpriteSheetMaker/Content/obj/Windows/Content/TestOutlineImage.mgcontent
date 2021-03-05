@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</SourceFile>
-  <SourceTime>2021-03-03T03:00:10.1745757-05:00</SourceTime>
-  <DestFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/bin/Windows/Content/TestOutlineImage.xnb</DestFile>
-  <DestTime>2021-03-03T03:10:12.0816934-05:00</DestTime>
+  <SourceFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</SourceFile>
+  <SourceTime>2021-03-01T18:33:44.7432219-05:00</SourceTime>
+  <DestFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/bin/Windows/Content/TestOutlineImage.xnb</DestFile>
+  <DestTime>2021-03-04T20:07:18.670448-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
