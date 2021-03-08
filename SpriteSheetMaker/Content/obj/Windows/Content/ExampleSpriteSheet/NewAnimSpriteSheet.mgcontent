@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.ssa</SourceFile>
-  <SourceTime>2021-03-02T04:12:28.927986-05:00</SourceTime>
-  <DestFile>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/bin/Windows/Content/ExampleSpriteSheet/NewAnimSpriteSheet.xnb</DestFile>
-  <DestTime>2021-03-05T00:31:33.9580517-05:00</DestTime>
+  <SourceFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.ssa</SourceFile>
+  <SourceTime>2021-03-08T02:03:34.4140047-05:00</SourceTime>
+  <DestFile>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/bin/Windows/Content/ExampleSpriteSheet/NewAnimSpriteSheet.xnb</DestFile>
+  <DestTime>2021-03-08T02:33:06.2936214-05:00</DestTime>
   <Importer>SpriteSheetImporter</Importer>
-  <ImporterTime>2021-03-05T00:31:31.7278884-05:00</ImporterTime>
+  <ImporterTime>2021-03-08T02:31:51.7035195-05:00</ImporterTime>
   <Processor>SpriteSheetProcessor</Processor>
-  <ProcessorTime>2021-03-05T00:31:31.7278884-05:00</ProcessorTime>
+  <ProcessorTime>2021-03-08T02:31:51.7035195-05:00</ProcessorTime>
   <Dependencies />
   <BuildAsset />
   <BuildOutput />

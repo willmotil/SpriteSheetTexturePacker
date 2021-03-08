@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Profile>Reach</Profile>
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.ssa</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MgFont.spritefont</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestFilterImage.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestMgLogo.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</File>
-    <File>C:/Users/will/MainFiles/GitPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestSphereImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/ExampleSpriteSheet/NewAnimSpriteSheet.ssa</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/MgFont.spritefont</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/sprite-png-animation.jpg</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestFilterImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestMgLogo.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestOutlineImage.png</File>
+    <File>C:/Users/Owner/GithubPrjs/SpriteSheetTexturePacker/SpriteSheetMaker/Content/TestSphereImage.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

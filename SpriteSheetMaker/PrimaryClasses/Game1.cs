@@ -10,7 +10,7 @@ using SpriteSheetPipelineReader;
 
 // ToDo rework the sprite sheet class and the content pipely that uses it to accomidate sets in the sheet.
 
-// References for additional extras to make this pipelinable...
+// References...
 // Tom Spillman and Andy Dunn
 // https://channel9.msdn.com/Series/Advanced-MonoGame-for-Windows-Phone-and-Windows-Store-Games/03?term=monogame%20content%20pipeline&lang-en=true
 // My post here for how to make a processor importer for this and a little run thru of some of the troubles i had doing it.
@@ -19,16 +19,17 @@ using SpriteSheetPipelineReader;
 // https://github.com/learn-monogame/learn-monogame.github.io/discussions/9#discussioncomment-371850
 // Apos altas similar to what ive done.
 // https://github.com/Apostolique/MonoGamePipelineExtension
-
+//
+// https://rexcellentgames.com/imgui-and-boring-ui/
 
 /// This project useed the monogame nuget pcl however i don't think this is neccessary now have to double check.
 /// This project required you to change the project appication properties to target,  .Net framework 4.6.1 , to match the nuget pcl ... 
 /// I altered this to 4.5 seems to be ok since im using the monogame extensions.
 /// 
 /// 
-/// using SpriteSheetXnbReader; is included.
-/// Game1 adds a reference to SpriteSheetXnbReader. 
-/// SpriteSheetXnbPipelineCreator adds a reference to SpriteSheetXnbReader.
+/// using SpriteSheetReader; is included.
+/// Game1 adds a reference to SpriteSheetReader. 
+/// SpriteSheetPipeline adds a reference to SpriteSheetReader.
 /// 
 /// 
 /// This project adds the mgcb references for the spritesheet pipline dll to the monogame pipeline tool.
@@ -49,57 +50,6 @@ using SpriteSheetPipelineReader;
 
 namespace SpriteSheetCreator
 {
-    public static class Globals
-    {
-        public static string mode = "SelectImages";
-        public static GraphicsDeviceManager graphics;
-        public static GraphicsDevice device;
-        public static SpriteBatch spriteBatch;
-        public static SpriteFont font;
-        // Does the conversion.
-        public static AnimatedSpriteSheetGenerator ssCreator;
-
-        // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
-        public static SpriteSheet spriteSheetInstance;
-
-        public static List<Texture2D> textures = new List<Texture2D>();
-        public static List<SpriteSheet.Set> tempSets = new List<SpriteSheet.Set>();
-        public static string CurrentDirectory = Environment.CurrentDirectory;
-        //Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        public static string saveDirectory = "";
-        public static string savePath = "";
-        public static string saveFileName = "NewAnimSpriteSheet";
-
-        public static RasterizerState rs_scissors_on = new RasterizerState() { ScissorTestEnable = true };
-        public static RasterizerState rs_scissors_off = new RasterizerState() { ScissorTestEnable = false };
-
-        public static void SetSaveDirectory(string directoryPath)
-        {
-            Globals.saveDirectory = directoryPath;
-            Globals.savePath = Path.Combine(Globals.saveDirectory, Globals.saveFileName);
-            Globals.savePath = Globals.savePath + ".ssa";
-        }
-
-        public static void CreateAndSave(bool openDirectory)
-        {
-            ssCreator = new AnimatedSpriteSheetGenerator();
-            spriteSheetInstance = new SpriteSheet();
-            if (Directory.Exists(Globals.saveDirectory) == false)
-                Directory.CreateDirectory(Globals.saveDirectory);
-            ssCreator.MakeSpriteSheet(Globals.device, Globals.saveFileName, 2048, 2048, Globals.textures, tempSets , out spriteSheetInstance, true, Globals.savePath);
-            if (openDirectory)
-                Process.Start(Path.GetDirectoryName(Globals.savePath));
-        }
-
-        public static void OpenDirectory(string path)
-        {
-            //Process.Start(path);
-            if (File.Exists(path))
-                Process.Start("explorer.exe", "/select, " + path);
-        }
-    }
-
-
     public class Game1 : Game
     {
         GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();

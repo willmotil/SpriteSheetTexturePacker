@@ -48,6 +48,7 @@ C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\De
 C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\SpriteSheetCreator.genruntimeconfig.cache
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\ExampleSpriteSheet\NewAnimSpriteSheet.xnb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\MgFont.xnb
+C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\sprite-png-animation.xnb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\TestFilterImage.xnb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\TestMgLogo.xnb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\TestOutlineImage.xnb
