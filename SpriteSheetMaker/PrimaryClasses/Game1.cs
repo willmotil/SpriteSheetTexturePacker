@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -48,6 +46,7 @@ using SpriteSheetPipelineReader;
 ///   
 
 
+
 namespace SpriteSheetCreator
 {
     public class Game1 : Game
@@ -55,12 +54,14 @@ namespace SpriteSheetCreator
         GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();
         GameModeSelectSets modeSelectSets = new GameModeSelectSets();
 
+        string msg = "";
+
         public Game1()
         {
             Globals.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
             Window.AllowUserResizing = true;
-            this.IsMouseVisible = true;
             Window.TextInput += modeSelectSets.TakeText;
         }
 
@@ -86,7 +87,7 @@ namespace SpriteSheetCreator
 
             modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
 
-            TestLoad();
+            msg = TestLoad();
         }
 
         protected override void Update(GameTime gameTime)
@@ -103,6 +104,9 @@ namespace SpriteSheetCreator
                     break;
                 case "Select Anim Sets":
                     modeSelectSets.Update(gameTime);
+                    break;
+                default:
+
                     break;
             }
 
@@ -121,39 +125,64 @@ namespace SpriteSheetCreator
                 case "Select Anim Sets":
                     modeSelectSets.Draw(gameTime);
                     break;
+                default:
+
+                    int buttonLength = 200;
+                    int lh = Globals.font.LineSpacing;
+                    int y = lh * 1;
+                    var r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+
+                    GraphicsDevice.Clear(Color.CadetBlue);
+                    Globals.spriteBatch.Begin();
+                    DrawCheckClickSetCommand(r, "Select Images", "SelectImages", Color.White, Color.Blue);
+                    Globals.spriteBatch.DrawString(Globals.font, msg, new Vector2(10, 50), Color.White);
+                    Globals.spriteBatch.End();
+
+                    break;
             }
 
             base.Draw(gameTime);
         }
 
-        public void TestLoad()
+        public void DrawCheckClickSetCommand(Rectangle r, string label, string commandName, Color textCol, Color outlineColor)
         {
+            Globals.spriteBatch.DrawRectangleOutline(r, 1, outlineColor);
+            Globals.spriteBatch.DrawString(Globals.font, label, r.Location.ToVector2(), textCol);
+            if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
+                Globals.mode = commandName;
+        }
+
+        public string TestLoad()
+        {
+            string msg = "";
             string cdir = Content.RootDirectory;
             Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
             SpriteSheet ss = Content.Load<SpriteSheet>("NewAnimSpriteSheet");
             Content.RootDirectory = cdir;
-            Console.WriteLine("\n F I L E  \n");
-            Console.WriteLine(ss.name + " " + ss.textureSheet.Name);
-            Console.WriteLine(ss.sheetWidth + " " + ss.sheetHeight);
-            Console.WriteLine("\n S P R I T E 'S  \n");
+            msg += "\n F I L E  \n";
+            msg += ss.name + " " + ss.textureSheet.Name +"\n";
+            msg += ss.sheetWidth + " " + ss.sheetHeight + "\n";
+            msg += "\n S P R I T E 'S  \n" + "\n";
             int i = 0;
             foreach (var sprite in ss.sprites)
             {
-                Console.WriteLine($"[{i}] \n" + sprite.nameOfSprite + "\n" + "Source rectangle: " + sprite.sourceRectangle);
+                msg += $"[{i}]  " + sprite.nameOfSprite + "     " + "Source rectangle: " + sprite.sourceRectangle + "\n";
                 i++;
             }
-            Console.WriteLine("\n S E T 'S  \n");
+            msg += "\n S E T 'S  \n" + "\n";
             foreach (var set in ss.sets)
             {
-                Console.WriteLine(set.nameOfAnimation);
-                Console.WriteLine("sprite time: " + set.time);
+                msg += set.nameOfAnimation+"    ";
+                msg += "sprite time: " + set.time+"    ";
                 foreach (var index in set.spriteIndexs)
                 {
-                    Console.Write(index + " ");
+                    msg += index + " ";
                 }
-                Console.WriteLine("\n ");
+                msg += "\n ";
             }
-            Console.WriteLine("\n ");
+            msg += "\n ";
+            Console.WriteLine(msg);
+            return msg;
         }
 
         public Texture2D LoadTexture(string FileName) { return Content.Load<Texture2D>(FileName); }

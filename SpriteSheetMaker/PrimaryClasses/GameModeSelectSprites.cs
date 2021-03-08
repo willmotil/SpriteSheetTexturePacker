@@ -37,6 +37,14 @@ namespace SpriteSheetCreator
 
         public void Update(GameTime gameTime)
         {
+            // goto menu.
+            if (command == "Menu")
+            {
+                Globals.mode = "Menu";
+                command = "none";
+                commandIndex = -1;
+            }
+
             if (command == "FolderBack" )
             {
                 Globals.CurrentDirectory = PathGetParentDirectory(Globals.CurrentDirectory);
@@ -137,25 +145,31 @@ namespace SpriteSheetCreator
 
             int buttonLength = 200;
             int lh = Globals.font.LineSpacing;
-            int y = lh * 2;
+            int y = lh * 5;
 
             Globals.spriteBatch.DrawString(Globals.font, "Select image files from folders or add all the images from a folder.", new Vector2(10 , 0), Color.White);
 
             r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
             DrawCheckClickSetCommand(r, "Directory back", "FolderBack", Color.White, Color.Blue);
 
-            r = new Rectangle(new Point(buttonLength *1 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+            r = new Rectangle(new Point(buttonLength *1 + 20, y), new Point(buttonLength, Globals.font.LineSpacing));
             DrawCheckClickSetCommand(r, "Add all files from folder", "Add Folder", Color.White, Color.Blue);
 
-            r = new Rectangle(new Point(buttonLength * 2 + 10, y), new Point(buttonLength + 50, Globals.font.LineSpacing));
-            DrawCheckClickSetCommand(r, "Load textures and select anim sets", "Load Textures", Color.White, Color.Blue);
+            y = lh * 2;
+
+            r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "BackToMenu", "Menu", Color.White, Color.Blue);
+
+            r = new Rectangle(new Point(buttonLength * 1 + 20, y), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Load textures select anim sets", "Load Textures", Color.White, Color.Blue);
+
 
             Globals.spriteBatch.End();
 
 
 
             int index = -1;
-            y = lh * 6;
+            y = lh * 9;
 
             index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, y),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders);
             if (index >= 0)

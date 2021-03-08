@@ -11,7 +11,7 @@ namespace SpriteSheetCreator
 {
     public static class Globals
     {
-        public static string mode = "SelectImages";
+        public static string mode = "Menu";   // SelectImages
         public static GraphicsDeviceManager graphics;
         public static GraphicsDevice device;
         public static SpriteBatch spriteBatch;
