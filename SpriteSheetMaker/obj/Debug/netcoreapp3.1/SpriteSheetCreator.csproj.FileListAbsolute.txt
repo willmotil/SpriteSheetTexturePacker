@@ -95,3 +95,4 @@ C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\ne
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\SpriteSheetCreator.dll
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\SpriteSheetCreator.pdb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\obj\Debug\netcoreapp3.1\SpriteSheetCreator.genruntimeconfig.cache
+C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetMaker\bin\Debug\netcoreapp3.1\Content\sprite-png-animation.xnb

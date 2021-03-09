@@ -53,6 +53,7 @@ namespace SpriteSheetCreator
     {
         GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();
         GameModeSelectSets modeSelectSets = new GameModeSelectSets();
+        GameModeCutUpSheetImage modeCutUpSpriteSheet = new GameModeCutUpSheetImage();
 
         string msg = "";
 
@@ -99,6 +100,9 @@ namespace SpriteSheetCreator
 
             switch (Globals.mode)
             {
+                case "CutUpSpriteSheet":
+                    modeCutUpSpriteSheet.Update(gameTime);
+                    break;
                 case "SelectImages":
                     modeSelectSprites.Update(gameTime);
                     break;
@@ -115,12 +119,16 @@ namespace SpriteSheetCreator
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Globals.device.Clear(Color.CornflowerBlue);
 
             switch (Globals.mode)
             {
+
+                case "CutUpSpriteSheet":
+                    modeCutUpSpriteSheet.Draw(gameTime);
+                    break;
                 case "SelectImages":
-                    modeSelectSprites.Draw( gameTime );
+                    modeSelectSprites.Draw(gameTime);
                     break;
                 case "Select Anim Sets":
                     modeSelectSets.Draw(gameTime);
@@ -130,12 +138,20 @@ namespace SpriteSheetCreator
                     int buttonLength = 200;
                     int lh = Globals.font.LineSpacing;
                     int y = lh * 1;
-                    var r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
 
-                    GraphicsDevice.Clear(Color.CadetBlue);
+                    Globals.device.Clear(Color.CadetBlue);
                     Globals.spriteBatch.Begin();
+
+                    var r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+                    DrawCheckClickSetCommand(r, "Cut Up Sprite Sheet", "CutUpSpriteSheet", Color.White, Color.Blue);
+
+                    y = lh * 2;
+
+                    r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
                     DrawCheckClickSetCommand(r, "Select Images", "SelectImages", Color.White, Color.Blue);
+
                     Globals.spriteBatch.DrawString(Globals.font, msg, new Vector2(10, 50), Color.White);
+
                     Globals.spriteBatch.End();
 
                     break;
@@ -159,7 +175,7 @@ namespace SpriteSheetCreator
             Content.RootDirectory = Path.Combine(cdir, "ExampleSpriteSheet");
             SpriteSheet ss = Content.Load<SpriteSheet>("NewAnimSpriteSheet");
             Content.RootDirectory = cdir;
-            msg += "\n F I L E  \n";
+            msg += "\n F I L E  \n" + "\n";
             msg += ss.name + " " + ss.textureSheet.Name +"\n";
             msg += ss.sheetWidth + " " + ss.sheetHeight + "\n";
             msg += "\n S P R I T E 'S  \n" + "\n";

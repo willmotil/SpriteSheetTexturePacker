@@ -171,7 +171,7 @@ namespace SpriteSheetCreator
             int index = -1;
             y = lh * 9;
 
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, y),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 0 + 10, y),ref visualDirectorySubFolderStartIndex, directorySubFolders, visualDirectorySubFolders, Color.Yellow );
             if (index >= 0)
             {
                 command = "EnterSubFolder";
@@ -180,14 +180,14 @@ namespace SpriteSheetCreator
                 visualDirectoryFilesStartIndex = 0;
             }
 
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, y), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, y), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles, Color.White);
             if (index >= 0)
             {
                 command = "AddFile";
                 commandIndex = index;
             }
 
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, y) , ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles);
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, y) , ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles, Color.White);
             if (index >= 0)
             {
                 command = "RemoveFile";
@@ -208,7 +208,7 @@ namespace SpriteSheetCreator
         /// <summary>
         /// While were drawing them we check for clicks waste not want not. Though this whole thing is realatively not performant as it doesn't need to be.
         /// </summary>
-        public int DrawVisualClickListDisplay(Vector2 position, ref int startIndex, List<string> items, List<string> visualItems)
+        public int DrawVisualClickListDisplay(Vector2 position, ref int startIndex, List<string> items, List<string> visualItems, Color textColor)
         {
             Globals.device.RasterizerState = Globals.rs_scissors_on;
             Globals.device.ScissorRectangle = new Rectangle(position.ToPoint(), new Point(visualListItemBoxWidth, (visualListItemsAllowed + 2) * Globals.font.LineSpacing));
@@ -234,7 +234,7 @@ namespace SpriteSheetCreator
                 {
                     Globals.spriteBatch.DrawRectangleOutline(r, 1, Color.White);
                     Globals.spriteBatch.DrawString(Globals.font, i.ToString(), r.Location.ToVector2(), Color.White);
-                    Globals.spriteBatch.DrawString(Globals.font, visualItems[i], re, Color.White);
+                    Globals.spriteBatch.DrawString(Globals.font, visualItems[i], re, textColor);
                     if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
                     {
                         clickedResult = i;
