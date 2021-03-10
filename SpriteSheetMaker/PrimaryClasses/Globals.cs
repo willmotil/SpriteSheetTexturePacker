@@ -18,6 +18,10 @@ namespace SpriteSheetCreator
         public static SpriteFont font;
         // Does the conversion.
         public static AnimatedSpriteSheetGenerator ssCreator;
+        public static GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();
+        public static GameModeSelectSets modeSelectSets = new GameModeSelectSets();
+        public static GameModeSelectCutUpSheetImage modeSelectCutUpSpriteSheet = new GameModeSelectCutUpSheetImage();
+        public static GameModeCutUpSpriteSheet modeCutUpSpriteSheet = new GameModeCutUpSpriteSheet();
 
         // A little class that encapsulates things that are related to stuff that are specific to a spritesheet like rectangles in it and stuff.
         public static SpriteSheet spriteSheetInstance;

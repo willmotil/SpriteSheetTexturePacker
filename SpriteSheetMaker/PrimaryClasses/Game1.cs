@@ -51,10 +51,7 @@ namespace SpriteSheetCreator
 {
     public class Game1 : Game
     {
-        GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();
-        GameModeSelectSets modeSelectSets = new GameModeSelectSets();
-        GameModeSelectCutUpSheetImage modeSelectCutUpSpriteSheet = new GameModeSelectCutUpSheetImage();
-        GameModeCutUpSpriteSheet modeCutUpSpriteSheet = new GameModeCutUpSpriteSheet();
+
 
         string msg = "";
 
@@ -64,7 +61,7 @@ namespace SpriteSheetCreator
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             Window.AllowUserResizing = true;
-            Window.TextInput += modeSelectSets.TakeText;
+            Window.TextInput += Globals.modeSelectSets.TakeText;
         }
 
         protected override void Initialize()
@@ -87,9 +84,8 @@ namespace SpriteSheetCreator
             var savedir = Path.Combine(Environment.CurrentDirectory, "Output");
             Globals.SetSaveDirectory(savedir);
 
-            //modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
-            modeSelectSprites.Load();
-            modeSelectCutUpSpriteSheet.Load();
+            Globals.modeSelectSprites.Load();
+            Globals.modeSelectCutUpSpriteSheet.Load();
 
             msg = TestLoad();
         }
@@ -99,22 +95,22 @@ namespace SpriteSheetCreator
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            MouseHelper.Update();
+            MouseHelper.Update(GraphicsDevice.Viewport.Bounds.Size);
 
             switch (Globals.mode)
             {
                 
                 case "SelectCutUpSpriteSheet":
-                    modeSelectCutUpSpriteSheet.Update(gameTime);
+                    Globals.modeSelectCutUpSpriteSheet.Update(gameTime);
                     break;
             case "CutUpSpriteSheet":
-                    modeCutUpSpriteSheet.Update(gameTime);
+                    Globals.modeCutUpSpriteSheet.Update(gameTime);
             break;
                 case "SelectImages":
-                    modeSelectSprites.Update(gameTime);
+                    Globals.modeSelectSprites.Update(gameTime);
                     break;
                 case "Select Anim Sets":
-                    modeSelectSets.Update(gameTime);
+                    Globals.modeSelectSets.Update(gameTime);
                     break;
                 default:
 
@@ -132,16 +128,16 @@ namespace SpriteSheetCreator
             {
 
                 case "SelectCutUpSpriteSheet":
-                    modeSelectCutUpSpriteSheet.Draw(gameTime);
+                    Globals.modeSelectCutUpSpriteSheet.Draw(gameTime);
                     break;
                 case "CutUpSpriteSheet":
-                    modeCutUpSpriteSheet.Draw(gameTime);
+                    Globals.modeCutUpSpriteSheet.Draw(gameTime);
                     break;
                 case "SelectImages":
-                    modeSelectSprites.Draw(gameTime);
+                    Globals.modeSelectSprites.Draw(gameTime);
                     break;
                 case "Select Anim Sets":
-                    modeSelectSets.Draw(gameTime);
+                    Globals.modeSelectSets.Draw(gameTime);
                     break;
                 default:
 
