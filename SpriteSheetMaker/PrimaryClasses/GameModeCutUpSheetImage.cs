@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -33,6 +34,11 @@ namespace SpriteSheetCreator
         //string command2 = "none";
         int commandIndex = 0;
 
+        public void Load()
+        {
+            Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+        }
+
 
         public void Update(GameTime gameTime)
         {
@@ -41,6 +47,41 @@ namespace SpriteSheetCreator
             if (command == "Menu")
             {
                 Globals.mode = "Menu";
+                command = "none";
+                commandIndex = -1;
+            }
+
+            if (command == "FolderBack")
+            {
+                Globals.CurrentDirectory = Globals.CurrentDirectory.PathGetParentDirectory();
+                Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+                //GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+                command = "none";
+            }
+
+            if (command == "EnterSubFolder" && commandIndex >= 0)
+            {
+                Globals.CurrentDirectory = directorySubFolders[commandIndex];
+                Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+                //GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+                command = "none";
+                commandIndex = -1;
+            }
+
+            if (command == "AddFile" && commandIndex >= 0)
+            {
+                bool isgood = true;
+                foreach (var s in selectedImageFiles)
+                {
+                    if (s == directoryFiles[commandIndex])
+                        isgood = false;
+                }
+                if (isgood)
+                {
+                    selectedImageFiles.Add(directoryFiles[commandIndex]);
+                    string[] brokenpath = directoryFiles[commandIndex].Split('\\');
+                    visualSelectedImageFiles.Add(brokenpath.Last());
+                }
                 command = "none";
                 commandIndex = -1;
             }
@@ -67,6 +108,12 @@ namespace SpriteSheetCreator
             r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
             DrawCheckClickSetCommand(r, "BackToMenu", "Menu", Color.White, Color.Blue);
 
+            y = lh * 4;
+
+            r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
+            DrawCheckClickSetCommand(r, "Directory back", "FolderBack", Color.White, Color.Blue);
+
+
             Globals.spriteBatch.End();
 
 
@@ -79,6 +126,20 @@ namespace SpriteSheetCreator
                 commandIndex = index;
                 visualDirectorySubFolderStartIndex = 0;
                 visualDirectoryFilesStartIndex = 0;
+            }
+
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, y), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles, Color.White);
+            if (index >= 0)
+            {
+                command = "AddFile";
+                commandIndex = index;
+            }
+
+            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, y), ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles, Color.White);
+            if (index >= 0)
+            {
+                command = "RemoveFile";
+                commandIndex = index;
             }
 
         }

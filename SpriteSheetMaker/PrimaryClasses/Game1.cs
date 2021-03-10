@@ -86,7 +86,9 @@ namespace SpriteSheetCreator
             var savedir = Path.Combine(Environment.CurrentDirectory, "Output");
             Globals.SetSaveDirectory(savedir);
 
-            modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+            //modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+            modeSelectSprites.Load();
+            modeCutUpSpriteSheet.Load();
 
             msg = TestLoad();
         }

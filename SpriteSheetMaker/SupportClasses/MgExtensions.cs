@@ -6,8 +6,10 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -322,49 +324,6 @@ namespace Microsoft.Xna.Framework
                 return new Vector2(a.X * s.X * rate.Y * d, d * s.Y);
         }
 
-
-        public static Vector2 VirtualScreenCoords(this Vector2 v, GraphicsDevice gd)
-        {
-            return v / gd.Viewport.Bounds.Size.ToVector2();
-        }
-
-        public static bool IsKeyDown(this Keys key)
-        {
-            if (Keyboard.GetState().IsKeyDown(key))
-                return true;
-            else
-                return false;
-        }
-
-        public static bool IsKeyPressedWithDelay(this Keys key, GameTime gameTime)
-        {
-            if (Keyboard.GetState().IsKeyDown(key) && IsUnDelayed(gameTime))
-                return true;
-            else
-                return false;
-        }
-
-        public static float DelayTime { get; set; } = 0.25f;
-        static float delay = 0f;
-        public static bool IsUnDelayed(this GameTime gametime, float newDelayAmount)
-        {
-            DelayTime = newDelayAmount;
-            return gametime.IsUnDelayed();
-        }
-        public static bool IsUnDelayed(this GameTime gametime)
-        {
-            if (delay < 0)
-            {
-                delay = DelayTime;
-                return true;
-            }
-            else
-            {
-                delay -= (float)gametime.ElapsedGameTime.TotalSeconds;
-                return false;
-            }
-        }
-
         /// <summary>
         /// Allows a position to be inflected against a unit normal and any position on its surface plane. 
         /// This is useful in mirroring positions across a plane 
@@ -418,6 +377,58 @@ namespace Microsoft.Xna.Framework
             return new Vector3((float)(p.X * Math.Cos(q) - p.Y * Math.Sin(q)), (float)(p.X * Math.Sin(q) + p.Y * Math.Cos(q)), p.Z);
         }
 
+        public static Vector2 VirtualScreenCoords(this Vector2 v, GraphicsDevice gd)
+        {
+            return v / gd.Viewport.Bounds.Size.ToVector2();
+        }
+
+
+
+        #region Keyboard related
+
+        public static bool IsKeyDown(this Keys key)
+        {
+            if (Keyboard.GetState().IsKeyDown(key))
+                return true;
+            else
+                return false;
+        }
+
+        public static bool IsKeyPressedWithDelay(this Keys key, GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(key) && IsUnDelayed(gameTime))
+                return true;
+            else
+                return false;
+        }
+
+        public static float DelayTime { get; set; } = 0.25f;
+        static float delay = 0f;
+        public static bool IsUnDelayed(this GameTime gametime, float newDelayAmount)
+        {
+            DelayTime = newDelayAmount;
+            return gametime.IsUnDelayed();
+        }
+        public static bool IsUnDelayed(this GameTime gametime)
+        {
+            if (delay < 0)
+            {
+                delay = DelayTime;
+                return true;
+            }
+            else
+            {
+                delay -= (float)gametime.ElapsedGameTime.TotalSeconds;
+                return false;
+            }
+        }
+
+        #endregion
+
+
+
+        #region compress decompress
+
         public static byte[] Compress(this byte[] rawByteData)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -452,6 +463,11 @@ namespace Microsoft.Xna.Framework
                 }
             }
         }
+
+        #endregion
+
+
+        #region binary math
 
         /// <summary>
         /// Bitmath bit check.
@@ -519,6 +535,83 @@ namespace Microsoft.Xna.Framework
                 result += ((inValue & (1 << (bitIndex))) > 0) ? '1' : '0';
             return result;
         }
+
+        #endregion
+
+
+        #region path directory
+
+        public static void GetSubDirectorysAndImgFiles(this string path, out List<string> directorySubFolders, out List<string> directoryFiles, out List<string> visualDirectorySubFolders, out List<string> visualDirectoryFiles)
+        {
+            GetSubDirectorysAndFiles(path, new string[] { ".png", ".jpg" }, out  directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+        }
+
+        public static void GetSubDirectorysAndFiles(this string path ,  string[] exts, out List<string> directorySubFolders, out List<string> directoryFiles, out List<string> visualDirectorySubFolders, out List<string> visualDirectoryFiles)
+        {
+            directorySubFolders = Directory.GetDirectories(path).ToList();
+            directoryFiles = path.GetFileTypesInFolderAsList( exts);
+
+            visualDirectorySubFolders = new List<string>();
+            for (int i = 0; i < directorySubFolders.Count; i++)
+            {
+                string[] brokenpath = directorySubFolders[i].Split('\\');
+                visualDirectorySubFolders.Add(brokenpath.Last());
+            }
+
+            visualDirectoryFiles = new List<string>();
+            for (int i = 0; i < directoryFiles.Count; i++)
+            {
+                string[] brokenpath = directoryFiles[i].Split('\\');
+                visualDirectoryFiles.Add(brokenpath.Last());
+            }
+        }
+
+        public static string[] GetFileTypesInFolderAsArray(this string path, string[] filetypes)
+        {
+            return GetFileTypesInFolderAsList(path, filetypes).ToArray();
+        }
+
+        /// <summary>
+        /// Gets files of type pass null to filetypes to get all files.
+        /// </summary>
+        public static List<string> GetFileTypesInFolderAsList(this string path, string[] filetypes)
+        {
+            List<string> matchinglist = new List<string>();
+            string[] namearray;
+
+            bool anyall_result = false;
+            if (filetypes == null)
+            {
+                anyall_result = true;
+                namearray = Directory.GetFiles(path);
+                for (int n = 0; n < namearray.Length; n++)
+                    matchinglist.Add(namearray[n]);
+            }
+            if (anyall_result == false)
+            {
+                for (int index = 0; index < filetypes.Length; index++)
+                {
+                    filetypes[index] = filetypes[index].Replace(".", ""); // strip period off first
+                    namearray = Directory.GetFiles(path, "*." + filetypes[index]);
+                    for (int n = 0; n < namearray.Length; n++)
+                    {
+                        matchinglist.Add(namearray[n]);
+                    }
+                }
+            }
+            return matchinglist;
+        }
+
+        public static string PathGetParentDirectory(this string path)
+        {
+            DirectoryInfo d = Directory.GetParent(path);
+            if (d != null)
+                return d.FullName;
+            else
+                return path;
+        }
+
+        #endregion
 
         public static string GetListingOfSupportedDisplayModesToString(this GraphicsDevice gd)
         {

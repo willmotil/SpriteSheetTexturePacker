@@ -35,6 +35,11 @@ namespace SpriteSheetCreator
         //string command2 = "none";
         int commandIndex = 0;
 
+        public void Load()
+        {
+            Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+        }
+
         public void Update(GameTime gameTime)
         {
             // goto menu.
@@ -47,8 +52,9 @@ namespace SpriteSheetCreator
 
             if (command == "FolderBack" )
             {
-                Globals.CurrentDirectory = PathGetParentDirectory(Globals.CurrentDirectory);
-                GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+                Globals.CurrentDirectory = Globals.CurrentDirectory.PathGetParentDirectory();
+                Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+                //GetSubDirectorysAndFiles(Globals.CurrentDirectory);
                 command = "none";
             }
 
@@ -101,7 +107,8 @@ namespace SpriteSheetCreator
             if (command == "EnterSubFolder" && commandIndex >= 0)
             {
                 Globals.CurrentDirectory = directorySubFolders[commandIndex];
-                GetSubDirectorysAndFiles(Globals.CurrentDirectory);
+                Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+                //GetSubDirectorysAndFiles(Globals.CurrentDirectory);
                 command = "none";
                 commandIndex = -1;
             }
