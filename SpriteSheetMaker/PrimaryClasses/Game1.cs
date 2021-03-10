@@ -53,7 +53,8 @@ namespace SpriteSheetCreator
     {
         GameModeSelectSprites modeSelectSprites = new GameModeSelectSprites();
         GameModeSelectSets modeSelectSets = new GameModeSelectSets();
-        GameModeCutUpSheetImage modeCutUpSpriteSheet = new GameModeCutUpSheetImage();
+        GameModeSelectCutUpSheetImage modeSelectCutUpSpriteSheet = new GameModeSelectCutUpSheetImage();
+        GameModeCutUpSpriteSheet modeCutUpSpriteSheet = new GameModeCutUpSpriteSheet();
 
         string msg = "";
 
@@ -88,7 +89,7 @@ namespace SpriteSheetCreator
 
             //modeSelectSprites.GetSubDirectorysAndFiles(Globals.CurrentDirectory);
             modeSelectSprites.Load();
-            modeCutUpSpriteSheet.Load();
+            modeSelectCutUpSpriteSheet.Load();
 
             msg = TestLoad();
         }
@@ -102,9 +103,13 @@ namespace SpriteSheetCreator
 
             switch (Globals.mode)
             {
-                case "CutUpSpriteSheet":
-                    modeCutUpSpriteSheet.Update(gameTime);
+                
+                case "SelectCutUpSpriteSheet":
+                    modeSelectCutUpSpriteSheet.Update(gameTime);
                     break;
+            case "CutUpSpriteSheet":
+                    modeCutUpSpriteSheet.Update(gameTime);
+            break;
                 case "SelectImages":
                     modeSelectSprites.Update(gameTime);
                     break;
@@ -126,6 +131,9 @@ namespace SpriteSheetCreator
             switch (Globals.mode)
             {
 
+                case "SelectCutUpSpriteSheet":
+                    modeSelectCutUpSpriteSheet.Draw(gameTime);
+                    break;
                 case "CutUpSpriteSheet":
                     modeCutUpSpriteSheet.Draw(gameTime);
                     break;
@@ -145,7 +153,7 @@ namespace SpriteSheetCreator
                     Globals.spriteBatch.Begin();
 
                     var r = new Rectangle(new Point(buttonLength * 0 + 10, y), new Point(buttonLength, Globals.font.LineSpacing));
-                    DrawCheckClickSetCommand(r, "Cut Up Sprite Sheet", "CutUpSpriteSheet", Color.White, Color.Blue);
+                    DrawCheckClickSetCommand(r, "Cut Up Sprite Sheet", "SelectCutUpSpriteSheet", Color.White, Color.Blue);
 
                     y = lh * 2;
 

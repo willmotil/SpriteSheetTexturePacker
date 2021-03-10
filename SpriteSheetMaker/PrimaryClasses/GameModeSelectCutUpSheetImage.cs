@@ -10,18 +10,20 @@ using SpriteSheetPipelineReader;
 
 namespace SpriteSheetCreator
 {
-    public class GameModeCutUpSheetImage
+    public class GameModeSelectCutUpSheetImage
     {
         // Listing of directorys in current directory.
         public List<string> directorySubFolders = new List<string>();
         // Listing of files in the current directory.
         public List<string> directoryFiles = new List<string>();
-        // Listing of selected files.
-        public List<string> selectedImageFiles = new List<string>();
+        //// Listing of selected files.
+        //public List<string> selectedImageFiles = new List<string>();
+        string selectedImageFile = "";
 
         public List<string> visualDirectorySubFolders = new List<string>();
         public List<string> visualDirectoryFiles = new List<string>();
         public List<string> visualSelectedImageFiles = new List<string>();
+        public string visualSelectedImageFile = "";
 
         int visualDirectorySubFolderStartIndex = 0;
         int visualDirectoryFilesStartIndex = 0;
@@ -68,20 +70,16 @@ namespace SpriteSheetCreator
                 commandIndex = -1;
             }
 
-            if (command == "AddFile" && commandIndex >= 0)
+            if (command == "SelectFile" && commandIndex >= 0)
             {
-                bool isgood = true;
-                foreach (var s in selectedImageFiles)
-                {
-                    if (s == directoryFiles[commandIndex])
-                        isgood = false;
-                }
-                if (isgood)
-                {
-                    selectedImageFiles.Add(directoryFiles[commandIndex]);
-                    string[] brokenpath = directoryFiles[commandIndex].Split('\\');
-                    visualSelectedImageFiles.Add(brokenpath.Last());
-                }
+                selectedImageFile = directoryFiles[commandIndex];
+                string[] brokenpath = directoryFiles[commandIndex].Split('\\');
+                visualSelectedImageFile = brokenpath.Last();
+
+                GameModeCutUpSpriteSheet.selectedImageFile = selectedImageFile;
+                GameModeCutUpSpriteSheet.visualSelectedImageFile = visualSelectedImageFile;
+                GameModeCutUpSpriteSheet.LoadImage();
+                Globals.mode = "CutUpSpriteSheet";
                 command = "none";
                 commandIndex = -1;
             }
@@ -131,14 +129,7 @@ namespace SpriteSheetCreator
             index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 1 + 10, y), ref visualDirectoryFilesStartIndex, directoryFiles, visualDirectoryFiles, Color.White);
             if (index >= 0)
             {
-                command = "AddFile";
-                commandIndex = index;
-            }
-
-            index = DrawVisualClickListDisplay(new Vector2(visualListItemBoxWidth * 2 + 10, y), ref visualSelectedImagesStartIndex, selectedImageFiles, visualSelectedImageFiles, Color.White);
-            if (index >= 0)
-            {
-                command = "RemoveFile";
+                command = "SelectFile";
                 commandIndex = index;
             }
 

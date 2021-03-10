@@ -15,4 +15,3 @@ C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.dll
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.pdb
 C:\Users\Owner\GithubPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.csprojAssemblyReference.cache
-C:\Users\will\MainFiles\GitPrjs\SpriteSheetTexturePacker\SpriteSheetPipelineReader\obj\Debug\SpriteSheetPipelineReader.csprojAssemblyReference.cache
