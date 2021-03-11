@@ -42,7 +42,7 @@ namespace SpriteSheetCreator
         public void Update(GameTime gameTime)
         {
 
-            if (currentIndex >= 0 && MouseHelper.IsRightDragged) 
+            if (currentIndex >= 0 && MouseHelper.IsRightDragged)
             {
                 sourceRectangles[currentIndex] = MouseHelper.RightDragRectangle;
             }
@@ -58,15 +58,15 @@ namespace SpriteSheetCreator
             if (command == "LastSprite")
             {
                 command = "none";
-                if (currentIndex - 1 >= 0 )
+                if (currentIndex - 1 >= 0)
                     currentIndex--;
             }
 
             if (command == "NextSprite")
             {
                 command = "none";
-                if(currentIndex + 1  < sourceRectangles.Count)
-                    currentIndex ++;
+                if (currentIndex + 1 < sourceRectangles.Count)
+                    currentIndex++;
             }
 
             if (command == "CutToImages")
@@ -74,6 +74,17 @@ namespace SpriteSheetCreator
                 command = "none";
                 if (sourceRectangles.Count > 0)
                     CutRectangles(Globals.device, true);
+            }
+
+            if (textureToCutUp == null)
+                command = "none";
+            if (command == "EraseColor")
+            {
+                if (MouseHelper.IsRightClicked)
+                {
+                    ErasePixelColor(Globals.device);
+                    command = "none";
+                }
             }
 
         }
@@ -126,16 +137,23 @@ namespace SpriteSheetCreator
             r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
             DrawCheckClickSetCommand(r, "Cut To Images", "CutToImages", Color.White, Color.Blue);
 
+            x = buttonLength * 3 + 40;
+            y = lsp * 0;
+
+            // Erase color.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Erase Color", "EraseColor", Color.White, Color.Blue);
+
             y = lsp * 2;
 
             int sx = 10;
             int sy = y;
-            foreach(var rect in sourceRectangles)
+            foreach (var rect in sourceRectangles)
             {
                 var p0 = new Vector2(sx, sy);
                 var p1 = new Vector2(sx + 1, sy + 1);
                 Globals.spriteBatch.DrawString(Globals.font, rect.ToString(), p0, Color.Black);
-                Globals.spriteBatch.DrawString(Globals.font, rect.ToString() , p1, Color.White);
+                Globals.spriteBatch.DrawString(Globals.font, rect.ToString(), p1, Color.White);
                 MgDrawExt.DrawBasicLine(p0, rect.Location.ToVector2(), 1, Color.Aquamarine);
                 MgDrawExt.DrawRectangleOutline(rect, 1, Color.Aquamarine);
                 var rect2 = rect;
@@ -165,19 +183,21 @@ namespace SpriteSheetCreator
         Color[] colorArray;
         public void CutRectangles(GraphicsDevice gd, bool openDirectory)
         {
-            colorArray = new Color[textureToCutUp.Width * textureToCutUp.Height];
-            textureToCutUp.GetData<Color>(colorArray);
-            //selectedImageFile
+            if (colorArray == null)
+            {
+                colorArray = new Color[textureToCutUp.Width * textureToCutUp.Height];
+                textureToCutUp.GetData<Color>(colorArray);
+            }
             var savepath = Globals.savePath;
             savepath = MgExtensions.PathStripFileName(savepath);
             savepath = Path.Combine(savepath, "CutUpSheetImages");
-            if(Directory.Exists(savepath) == false)
+            if (Directory.Exists(savepath) == false)
             {
                 Directory.CreateDirectory(savepath);
             }
             Color[] tmpColorArray;
             string fullsavepath = "";
-            for (int i =0; i < sourceRectangles.Count; i++)
+            for (int i = 0; i < sourceRectangles.Count; i++)
             {
                 var savename = Path.GetFileNameWithoutExtension(visualSelectedImageFile);
                 savename = savename + "_" + i.ToString() + ".png";
@@ -204,7 +224,32 @@ namespace SpriteSheetCreator
 
             if (openDirectory)
                 Globals.OpenDirectory(fullsavepath);
-                //Process.Start(Path.GetDirectoryName(Globals.savePath));
+        }
+
+        public void ErasePixelColor(GraphicsDevice gd)
+        {
+            var w = textureToCutUp.Width;
+            var h = textureToCutUp.Height;
+            if (colorArray == null)
+            {
+                colorArray = new Color[w * h];
+                textureToCutUp.GetData<Color>(colorArray);
+            }
+            var mp = MouseHelper.LastRightPressedAt;
+            var pixelColorToErase = colorArray[(int)mp.X + (int)mp.Y * w];
+            Color[] tmpColorArray = new Color[w * h];
+            for (int y = 0; y < h; y++)
+            {
+                for (int x = 0; x < w; x++)
+                {
+                    var pixel = colorArray[x + y * w];
+                    if (pixel == pixelColorToErase)
+                        pixel = Color.Transparent;
+                    tmpColorArray[x + y * w] = pixel;
+                }
+            }
+            colorArray = tmpColorArray;
+            textureToCutUp.SetData<Color>(colorArray);
         }
 
     }

@@ -103,7 +103,7 @@ namespace SpriteSheetCreator
         }
 
         string newSaveName = Globals.saveFileName;
-        string setName = "";
+        string setName = "00";
         int currentSetIndex = -1;
 
         string setTimeString = ".25f";
@@ -318,6 +318,8 @@ namespace SpriteSheetCreator
 
         public void DrawTextboxClickSetCommand(Rectangle r, string textBoxName , string textValue , string commandName, Color textCol, Color outlineColor)
         {
+            if(textValue == null)
+                textValue = "NewAnimSpriteSheet";
             Globals.spriteBatch.DrawString(Globals.font, textBoxName, r.Location.ToVector2(), outlineColor);
             Rectangle r2 = r;
             r2.Y += Globals.font.LineSpacing;
