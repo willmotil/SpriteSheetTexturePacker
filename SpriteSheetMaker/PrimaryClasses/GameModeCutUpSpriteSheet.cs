@@ -16,8 +16,8 @@ namespace SpriteSheetCreator
         public int currentIndex = -1;
         public static string selectedImageFile = "";
         public static string visualSelectedImageFile = "";
-        public static Texture2D textureToCutUp;
         public static float animationTime = 0f;
+        public static Texture2D textureToCutUp;
 
         string command = "none";
         //string command2 = "none";
@@ -55,6 +55,27 @@ namespace SpriteSheetCreator
                 currentIndex = sourceRectangles.Count - 1;
             }
 
+            if (command == "LastSprite")
+            {
+                command = "none";
+                if (currentIndex - 1 >= 0 )
+                    currentIndex--;
+            }
+
+            if (command == "NextSprite")
+            {
+                command = "none";
+                if(currentIndex + 1  < sourceRectangles.Count)
+                    currentIndex ++;
+            }
+
+            if (command == "CutToImages")
+            {
+                command = "none";
+                if (sourceRectangles.Count > 0)
+                    CutRectangles();
+            }
+
         }
 
         public void Draw(GameTime gameTime)
@@ -83,6 +104,27 @@ namespace SpriteSheetCreator
             // New set.
             r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
             DrawCheckClickSetCommand(r, "Add Sprite Rectangle", "AddSpriteRectangle", Color.White, Color.Blue);
+
+            x = buttonLength * 1 + 20;
+            y = lsp * 1;
+
+            // last.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Last Sprite", "LastSprite", Color.White, Color.Blue);
+
+            x = buttonLength * 2 + 30;
+            y = lsp * 1;
+
+            // next.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Next Sprite", "NextSprite", Color.White, Color.Blue);
+
+            x = buttonLength * 3 + 40;
+            y = lsp * 1;
+
+            // next.
+            r = new Rectangle(new Point(x, y), new Point(buttonLength, h));
+            DrawCheckClickSetCommand(r, "Cut To Images", "CutToImages", Color.White, Color.Blue);
 
             y = lsp * 2;
 
@@ -118,6 +160,14 @@ namespace SpriteSheetCreator
             Globals.spriteBatch.DrawString(Globals.font, label, r.Location.ToVector2(), textCol);
             if (r.Contains(MouseHelper.Pos) && MouseHelper.IsLeftJustReleased)
                 command = commandName;
+        }
+
+        Color[] colorArray;
+        public void CutRectangles()
+        {
+            colorArray = new Color[textureToCutUp.Width * textureToCutUp.Height];
+            textureToCutUp.GetData<Color>(colorArray);
+
         }
 
     }
