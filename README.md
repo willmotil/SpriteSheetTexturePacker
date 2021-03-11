@@ -12,4 +12,6 @@ In the .mgcb file you must include a reference to the pipeline reader.dll to rea
 This project also used the monogame frame work and content nuget packages.
 
 <img src="https://github.com/willmotil/SpriteSheetTexturePacker/blob/main/ConsoleOutput.png"  height="400" width="600"> 
-<img src="https://github.com/willmotil/SpriteSheetTexturePacker/blob/main/SpriteSheetCutter.png"  height="400" width="600"> 
+
+There is also a mode to cut out pre-existing spritesheets into image rectangles and then save those to disk.
+<img src="https://github.com/willmotil/SpriteSheetTexturePacker/blob/main/CutOutSpriteSheet.png"  height="400" width="600"> 
