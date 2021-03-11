@@ -73,7 +73,7 @@ namespace SpriteSheetCreator
             {
                 command = "none";
                 if (sourceRectangles.Count > 0)
-                    CutRectangles();
+                    CutRectangles(Globals.device, true);
             }
 
         }
@@ -163,11 +163,48 @@ namespace SpriteSheetCreator
         }
 
         Color[] colorArray;
-        public void CutRectangles()
+        public void CutRectangles(GraphicsDevice gd, bool openDirectory)
         {
             colorArray = new Color[textureToCutUp.Width * textureToCutUp.Height];
             textureToCutUp.GetData<Color>(colorArray);
+            //selectedImageFile
+            var savepath = Globals.savePath;
+            savepath = MgExtensions.PathStripFileName(savepath);
+            savepath = Path.Combine(savepath, "CutUpSheetImages");
+            if(Directory.Exists(savepath) == false)
+            {
+                Directory.CreateDirectory(savepath);
+            }
+            Color[] tmpColorArray;
+            string fullsavepath = "";
+            for (int i =0; i < sourceRectangles.Count; i++)
+            {
+                var savename = Path.GetFileNameWithoutExtension(visualSelectedImageFile);
+                savename = savename + "_" + i.ToString() + ".png";
+                fullsavepath = Path.Combine(savepath, savename);
+                var rect = sourceRectangles[i];
+                tmpColorArray = new Color[rect.Width * rect.Height];
+                int ty = 0;
+                int tx = 0;
+                for (int y = rect.Top; y < rect.Bottom; y++)
+                {
+                    tx = 0;
+                    for (int x = rect.Left; x < rect.Right; x++)
+                    {
+                        tmpColorArray[tx + ty * rect.Width] = colorArray[x + y * textureToCutUp.Width];
+                        tx++;
+                    }
+                    ty++;
+                }
+                var t = new Texture2D(gd, rect.Width, rect.Height);
+                t.SetData(tmpColorArray);
+                t.SaveTextureAsPngToPath(fullsavepath);
+                t.Dispose();
+            }
 
+            if (openDirectory)
+                Globals.OpenDirectory(fullsavepath);
+                //Process.Start(Path.GetDirectoryName(Globals.savePath));
         }
 
     }

@@ -38,7 +38,7 @@ namespace SpriteSheetCreator
 
         public void Load()
         {
-            Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+            Globals.CurrentDirectory.GetSubDirectorysAndImageFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
         }
 
 
@@ -56,7 +56,7 @@ namespace SpriteSheetCreator
             if (command == "FolderBack")
             {
                 Globals.CurrentDirectory = Globals.CurrentDirectory.PathGetParentDirectory();
-                Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+                Globals.CurrentDirectory.GetSubDirectorysAndImageFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
                 //GetSubDirectorysAndFiles(Globals.CurrentDirectory);
                 command = "none";
             }
@@ -64,7 +64,7 @@ namespace SpriteSheetCreator
             if (command == "EnterSubFolder" && commandIndex >= 0)
             {
                 Globals.CurrentDirectory = directorySubFolders[commandIndex];
-                Globals.CurrentDirectory.GetSubDirectorysAndImgFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
+                Globals.CurrentDirectory.GetSubDirectorysAndImageFiles(out directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
                 //GetSubDirectorysAndFiles(Globals.CurrentDirectory);
                 command = "none";
                 commandIndex = -1;

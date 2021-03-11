@@ -541,7 +541,10 @@ namespace Microsoft.Xna.Framework
 
         #region path directory
 
-        public static void GetSubDirectorysAndImgFiles(this string path, out List<string> directorySubFolders, out List<string> directoryFiles, out List<string> visualDirectorySubFolders, out List<string> visualDirectoryFiles)
+        /// <summary>
+        /// Monogame specific
+        /// </summary>
+        public static void GetSubDirectorysAndImageFiles(this string path, out List<string> directorySubFolders, out List<string> directoryFiles, out List<string> visualDirectorySubFolders, out List<string> visualDirectoryFiles)
         {
             GetSubDirectorysAndFiles(path, new string[] { ".png", ".jpg" }, out  directorySubFolders, out directoryFiles, out visualDirectorySubFolders, out visualDirectoryFiles);
         }
@@ -611,7 +614,24 @@ namespace Microsoft.Xna.Framework
                 return path;
         }
 
+        public static string PathStripFileName(this string path)
+        {
+            var filename = Path.GetFileName(path);
+            var result = path.Replace(filename, "");
+            return result;
+        }
+
         #endregion
+
+        public static void SaveTextureAsPngToPath(this Texture2D t, string path)
+        {
+            //var dirpath = Path.GetDirectoryName(path);
+            //Directory.CreateDirectory(dirpath);
+            using (System.IO.Stream fs = System.IO.File.OpenWrite(path))
+            {
+                t.SaveAsPng(fs, t.Width, t.Height);
+            }
+        }
 
         public static string GetListingOfSupportedDisplayModesToString(this GraphicsDevice gd)
         {
